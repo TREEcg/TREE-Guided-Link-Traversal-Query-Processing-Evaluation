@@ -1,0 +1,1 @@
+{"version":3,"file":"HttpServerFactory.js","sourceRoot":"","sources":["../../src/server/HttpServerFactory.ts"],"names":[],"mappings":"","sourcesContent":["import type { Server } from 'http';\n\n/**\n * A factory for HTTP servers\n */\nexport interface HttpServerFactory {\n  startServer: (port: number) => Server;\n}\n"]}

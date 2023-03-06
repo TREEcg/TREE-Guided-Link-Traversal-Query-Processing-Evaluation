@@ -1,0 +1,20 @@
+{
+  "name": "comunica_filter_benchmark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-mongo": "docker run -d -p 27017:27017 --name mongo-comunica-filter-benchmark mongo:latest",
+    "start-server": "npx community-solid-server -c config.json -f ./data",
+    "main": "node main.mjs",
+    "clean": "docker stop $(docker ps -a -q) && docker container prune"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@treecg/ldes-snapshot": "^0.1.1",
+    "@treecg/ldes-timeseries": "^0.0.2",
+    "ldes-solid-server": "^0.0.6"
+  }
+}
