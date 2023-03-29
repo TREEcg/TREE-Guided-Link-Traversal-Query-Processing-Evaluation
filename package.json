@@ -4,17 +4,25 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start-mongo": "docker run -d -p 27017:27017 --name mongo-comunica-filter-benchmark mongo:latest",
-    "start-server": "npx community-solid-server -c config.json -f ./data",
-    "main": "node main.mjs",
-    "clean": "docker stop $(docker ps -a -q) && docker container prune"
+    "initialize-benchmark-ldes": "node initialize_ldes.mjs",
+    "start-benchmark-server": "npx community-solid-server -c ./benchmark/config.json -f ./benchmark/data",
+    "start-data-source-location-ldes-1-446-topology": "yarn clean-docker && yarn start-mongo && node initialize_ldes.mjs -p 1 -l 446 -s 'location-LDES' && yarn start-benchmark-server",
+    "start-data-source-location-ldes-20-10-topology": "yarn clean-docker && yarn start-mongo && node initialize_ldes.mjs -p 20 -l 10 -s 'location-LDES' && yarn start-benchmark-server",
+    "start-data-source-ship-ldes-1-100000-topology": "yarn clean-docker && yarn start-mongo && node initialize_ldes.mjs -p 1 -l 100000 -s 'ship-LDES' && yarn start-benchmark-server",
+    "benchmark-follow-all": "(rm ./benchmark/output -f && touch ./benchmark/output && export COMUNICA_CONFIG='./benchmark/config_comunica_follow_all.json'; (node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js http://localhost:3000/ldes/test -p 5000 -t 60 -i -l info -w 1 --lenient) &> ./benchmark/output) & (export COMUNICA_CONFIG='./benchmark/config_comunica_follow_all.json' && (sleep 5 && node benchmark.mjs && fuser -k 5000/tcp))",
+    "benchmark-follow-tree": "(rm ./benchmark/output -f && touch ./benchmark/output && export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree.json'; (node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js http://localhost:3000/ldes/test -p 5000 -t 60 -i -l info -w 1 --lenient) &> ./benchmark/output) & (export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree.json' && (sleep 5 && node benchmark.mjs && fuser -k 5000/tcp))",
+    "benchmark-follow-tree-solver": "(rm ./benchmark/output -f && touch ./benchmark/output && export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree_solver.json'; (node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js http://localhost:3000/ldes/test -p 5000 -t 60 -i -l info -w 1 --lenient) &> ./benchmark/output) & (export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree_solver.json' && (sleep 5 && node benchmark.mjs && fuser -k 5000/tcp))",
+    "clean-docker": "docker stop $(docker ps -a -q) && docker container prune"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@comunica/actor-extract-links-tree": "file:./comunica-feature-link-traversal/packages/actor-extract-links-extract-tree",
+    "@comunica/query-sparql-link-traversal": "file:./comunica-feature-link-traversal/engines/query-sparql-link-traversal",
     "@treecg/ldes-snapshot": "^0.1.1",
     "@treecg/ldes-timeseries": "^0.0.2",
+    "commander": "^10.0.0",
     "ldes-solid-server": "^0.0.6"
   }
 }

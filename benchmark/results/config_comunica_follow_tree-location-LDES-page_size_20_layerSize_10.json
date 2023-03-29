@@ -1,0 +1,44 @@
+{
+    "./benchmark/config_comunica_follow_tree.json": {
+        "?t>\"2022-08-07T08:37:12.000Z\"^^xsd:dateTime": {
+            "number_result": {
+                "avg": 29,
+                "var": 0,
+                "min": 29,
+                "max": 29
+            },
+            "time_exec_last_result": {
+                "avg": 440.3095040023327,
+                "var": 3523.3104324762858,
+                "min": 380.95202399790287,
+                "max": 499.6669840067625
+            },
+            "number_request": {
+                "avg": 28,
+                "var": 0,
+                "min": 28,
+                "max": 28
+            }
+        },
+        "?t>\"1800-08-07T08:37:12.000Z\"^^xsd:dateTime": {
+            "number_result": {
+                "avg": 446,
+                "var": 0,
+                "min": 446,
+                "max": 446
+            },
+            "time_exec_last_result": {
+                "avg": 453.02200999855995,
+                "var": 288.29676434938517,
+                "min": 436.04270599782467,
+                "max": 470.00131399929523
+            },
+            "number_request": {
+                "avg": 28,
+                "var": 0,
+                "min": 28,
+                "max": 28
+            }
+        }
+    }
+}
