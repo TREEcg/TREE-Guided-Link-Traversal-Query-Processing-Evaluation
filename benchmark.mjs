@@ -31,12 +31,9 @@ FILTER(${filterExpression})
 `
 };
 
-const nRepetition = 2;
+const nRepetition = 1;
 
-const filterExpressions = [
-    '?t>"2022-08-07T08:37:12.000Z"^^xsd:dateTime',
-    '?t>"1800-08-07T08:37:12.000Z"^^xsd:dateTime',
-];
+const filterExpressions = dataSourceInfo.filters;
 
 const rawSumaryResults = {};
 const regexpSummary = /(TOTAL),([+-]?[0-9]*[.]?[0-9]+),([0-9]+)/;

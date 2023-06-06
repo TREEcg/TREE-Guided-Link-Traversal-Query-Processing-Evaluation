@@ -1,23 +1,123 @@
 {
     "./benchmark/config_comunica_follow_tree_solver.json": {
-        "?t>\"2022-08-07T08:37:12.000Z\"^^xsd:dateTime": {
+        "?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime": {
             "number_result": {
-                "avg": 29,
+                "avg": 120,
                 "var": 0,
-                "min": 29,
-                "max": 29
+                "min": 120,
+                "max": 120
             },
             "time_exec_last_result": {
-                "avg": 462.3058665022254,
-                "var": 3223.046757279046,
-                "min": 405.53398299217224,
-                "max": 519.0777500122786
+                "avg": 284.27142399922013,
+                "var": 0,
+                "min": 284.27142399922013,
+                "max": 284.27142399922013
             },
             "number_request": {
-                "avg": 28,
+                "avg": 8,
                 "var": 0,
-                "min": 28,
-                "max": 28
+                "min": 8,
+                "max": 8
+            }
+        },
+        "(?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime) || \n            (?t<\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime &&  ?t>=\"2022-08-07T08:22:16.000Z\"^^xsd:dateTime)": {
+            "number_result": {
+                "avg": 0,
+                "var": 0,
+                "min": 0,
+                "max": 0
+            },
+            "time_exec_last_result": {
+                "avg": 21.048369001597166,
+                "var": 0,
+                "min": 21.048369001597166,
+                "max": 21.048369001597166
+            },
+            "number_request": {
+                "avg": 1,
+                "var": 0,
+                "min": 1,
+                "max": 1
+            }
+        },
+        "?t<\"2022-08-07T08:28:02.000Z\"^^xsd:dateTime": {
+            "number_result": {
+                "avg": 280,
+                "var": 0,
+                "min": 280,
+                "max": 280
+            },
+            "time_exec_last_result": {
+                "avg": 347.5479150004685,
+                "var": 0,
+                "min": 347.5479150004685,
+                "max": 347.5479150004685
+            },
+            "number_request": {
+                "avg": 17,
+                "var": 0,
+                "min": 17,
+                "max": 17
+            }
+        },
+        "?t>=\"2022-08-07T08:29:23.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime": {
+            "number_result": {
+                "avg": 20,
+                "var": 0,
+                "min": 20,
+                "max": 20
+            },
+            "time_exec_last_result": {
+                "avg": 136.2459869980812,
+                "var": 0,
+                "min": 136.2459869980812,
+                "max": 136.2459869980812
+            },
+            "number_request": {
+                "avg": 3,
+                "var": 0,
+                "min": 3,
+                "max": 3
+            }
+        },
+        "false": {
+            "number_result": {
+                "avg": 0,
+                "var": 0,
+                "min": 0,
+                "max": 0
+            },
+            "time_exec_last_result": {
+                "avg": 27.831737000495195,
+                "var": 0,
+                "min": 27.831737000495195,
+                "max": 27.831737000495195
+            },
+            "number_request": {
+                "avg": 1,
+                "var": 0,
+                "min": 1,
+                "max": 1
+            }
+        },
+        "?t>\"2100-08-07T08:37:12.000Z\"^^xsd:dateTime": {
+            "number_result": {
+                "avg": 0,
+                "var": 0,
+                "min": 0,
+                "max": 0
+            },
+            "time_exec_last_result": {
+                "avg": 153.02173100039363,
+                "var": 0,
+                "min": 153.02173100039363,
+                "max": 153.02173100039363
+            },
+            "number_request": {
+                "avg": 3,
+                "var": 0,
+                "min": 3,
+                "max": 3
             }
         },
         "?t>\"1800-08-07T08:37:12.000Z\"^^xsd:dateTime": {
@@ -28,10 +128,10 @@
                 "max": 446
             },
             "time_exec_last_result": {
-                "avg": 447.75281649827957,
-                "var": 8.654908000298873,
-                "min": 444.81089399755,
-                "max": 450.69473899900913
+                "avg": 480.45296999812126,
+                "var": 0,
+                "min": 480.45296999812126,
+                "max": 480.45296999812126
             },
             "number_request": {
                 "avg": 28,

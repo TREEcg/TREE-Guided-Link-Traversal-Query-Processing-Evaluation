@@ -11,7 +11,17 @@ const supportedSource = new Map(Object.entries({
         'path': './benchmark/data/location-LDES.ttl',
         'date_first_element': "2022-08-07T08:08:21Z",
         'name': 'location-LDES',
-        'ldesIdentifier': 'http://localhost:3000/lil/#EventStream'
+        'ldesIdentifier': 'http://localhost:3000/lil/#EventStream',
+        'filters': [
+            '?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime',
+            `(?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime) || 
+            (?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime &&  ?t>="2022-08-07T08:22:16.000Z"^^xsd:dateTime)`,
+            '?t<"2022-08-07T08:28:02.000Z"^^xsd:dateTime',
+            '?t>="2022-08-07T08:29:23.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime',
+            'false',
+            '?t>"2100-08-07T08:37:12.000Z"^^xsd:dateTime',
+            '?t>"1800-08-07T08:37:12.000Z"^^xsd:dateTime',
+        ]
     },
     'ship-LDES':
     {
@@ -44,10 +54,13 @@ if (pageSize === Number.NaN || layerSize === Number.NaN) {
 if (dataSource === undefined) {
     throw new Error("The source is not supported");
 }
+
 dataSource['topology'] = {
     'page_size': pageSize,
     'layerSize': layerSize,
 };
+
+dataSource['filters'] = dataSource.filters;
 
 
 async function initialized_ldes() {

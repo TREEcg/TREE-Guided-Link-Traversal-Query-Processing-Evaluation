@@ -5,7 +5,7 @@
     ],
     "import": [
       "ccqslt:config/config-base.json",
-      "ccqslt:config/extract-links/actors/tree-no-solver.json"
+      "ccqslt:config/extract-links/actors/tree-not-guided.json"
     ]
   }
   
