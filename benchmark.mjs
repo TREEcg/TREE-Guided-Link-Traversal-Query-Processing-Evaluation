@@ -9,22 +9,27 @@ const config = process.env.COMUNICA_CONFIG;
 const sparqlEndpointOutputFile = `${benchmark_folder}/output`;
 const dataSourceInfoPath = `${benchmark_folder}/source_config/data_source_info.json`
 const dataSourceInfo = JSON.parse(fs.readFileSync(dataSourceInfoPath));
-const flatTopology = (topology)=>{
+const flatTopology = (topology) => {
     let resp = '';
-    for( const [k, v] of Object.entries(topology)) {
-        resp+=`${k}_${v}_`;
+    for (const [k, v] of Object.entries(topology)) {
+        resp += `${k}_${v}_`;
     }
-    return resp.substring(0, resp.length-1);
+    return resp.substring(0, resp.length - 1);
 }
-const resultFile = `${benchmark_folder}/results/${path.basename(config,'.json')}-${dataSourceInfo.name}-${flatTopology(dataSourceInfo.topology)}.json`;
 
+const directory = `${benchmark_folder}/results/${dataSourceInfo.name}-${flatTopology(dataSourceInfo.topology)}`
+const resultFile = `${directory}/${path.basename(config, '.json')}.json`;
+
+if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory);
+}
 
 const protoQuery = (filterExpression) => {
     return `
 PREFIX sosa: <http://www.w3.org/ns/sosa/> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 
-SELECT ?s ?t WHERE {
+SELECT DISTINCT ?s ?t WHERE {
     ?s sosa:resultTime ?t.
 FILTER(${filterExpression})
 }
@@ -32,6 +37,7 @@ FILTER(${filterExpression})
 };
 
 const nRepetition = 1;
+const max_execution_time = 60;
 
 const filterExpressions = dataSourceInfo.filters;
 
@@ -40,7 +46,7 @@ const regexpSummary = /(TOTAL),([+-]?[0-9]*[.]?[0-9]+),([0-9]+)/;
 const regexpCurrentExec = /([0-9]+),([+-]?[0-9]*[.]?[0-9]+),([0-9]+)/;
 
 async function engineExecution(query) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise(async (resolve, _reject) => {
         const engine = await new QueryEngine();
         engine.invalidateHttpCache();
         const results = await engine.query(
@@ -58,20 +64,20 @@ async function engineExecution(query) {
 
         data.on('data', (res) => {
             try {
-            const currentRes = res.toString();
-            if (regexpSummary.test(currentRes)) {
-                let tag = (currentRes).match(regexpSummary);
-                summary = {
-                    'time_exec_last_result': Number(tag[2]),
-                    'number_result': nRes,
-                };
-            } else if (regexpCurrentExec.test(currentRes)) {
-                nRes++;
-                let tag = (currentRes).match(regexpCurrentExec);
-                summary = {
-                    'time_exec_last_result': Number(tag[2]),
-                    'number_result': nRes,
-                };
+                const currentRes = res.toString();
+                if (regexpSummary.test(currentRes)) {
+                    let tag = (currentRes).match(regexpSummary);
+                    summary = {
+                        'time_exec_last_result': Number(tag[2]),
+                        'number_result': nRes,
+                    };
+                } else if (regexpCurrentExec.test(currentRes)) {
+                    nRes++;
+                    let tag = (currentRes).match(regexpCurrentExec);
+                    summary = {
+                        'time_exec_last_result': Number(tag[2]),
+                        'number_result': nRes,
+                    };
                 }
 
             } catch (error) {
@@ -106,6 +112,7 @@ async function main() {
     console.log(`--------------${config}--------------`);
     rawSumaryResults[config] = {}
     let beginningIndexOutputFile = 0;
+    await promiseSetTimeout(10 * 1_000);
     for (const filterExpression of filterExpressions) {
         console.log(`--------------filter expression: "${filterExpression}"--------------`)
         rawSumaryResults[config][filterExpression] = [];
@@ -131,18 +138,22 @@ async function main() {
 
 function createSummary(rawSumaryResults) {
     const sumary = {};
-    sumary[config] = {};
+    sumary['queries'] = [];
     for (const [filterExpression, value] of Object.entries(rawSumaryResults[config])) {
         const keys = ['time_exec_last_result', 'number_result', 'number_request'];
-        sumary[config][filterExpression] = {
+        const subSumary = {
+            'filter_expression': filterExpression,
             'number_result': value[0]['number_result']
         };
 
         for (const key of keys) {
-            sumary[config][filterExpression][key] = calculateStat(value, key);
+            subSumary[key] = calculateStat(value, key);
         }
+        sumary['queries'].push(subSumary);
     }
 
+    sumary['n_repetition'] = nRepetition;
+    sumary['config'] = config;
     return sumary;
 }
 
@@ -172,11 +183,19 @@ function calculateStat(value, key) {
         varianceKey += Math.pow(val - meanTimeKey, 2);
     }
     varianceKey /= nRepetition;
+
+    if (!Number.isFinite(min)) {
+        min = max_execution_time;
+    }
+
+    if (!Number.isFinite(max)) {
+        max = max_execution_time;
+    }
     return {
-        'avg': meanTimeKey,
-        'var': varianceKey,
-        'min': min,
-        'max': max
+        'avg': meanTimeKey || max_execution_time,
+        'var': varianceKey || 0,
+        'min': min || max_execution_time,
+        'max': max || max_execution_time
     };
 }
 
