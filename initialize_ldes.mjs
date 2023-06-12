@@ -14,8 +14,7 @@ const supportedSource = new Map(Object.entries({
         'ldesIdentifier': 'http://localhost:3000/lil/#EventStream',
         'filters': [
             '?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime',
-            `(?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime) || 
-            (?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime &&  ?t>="2022-08-07T08:22:16.000Z"^^xsd:dateTime)`,
+            `(?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime) || (?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime &&  ?t>="2022-08-07T08:22:16.000Z"^^xsd:dateTime)`,
             '?t<"2022-08-07T08:28:02.000Z"^^xsd:dateTime',
             '?t>="2022-08-07T08:29:23.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime',
             'false',

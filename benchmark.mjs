@@ -36,7 +36,7 @@ FILTER(${filterExpression})
 `
 };
 
-const nRepetition = 1;
+const nRepetition = 4;
 const max_execution_time = 60;
 
 const filterExpressions = dataSourceInfo.filters;
@@ -58,7 +58,7 @@ async function engineExecution(query) {
             'stats');
         let nRes = 0;
         let summary = {
-            'time_exec_last_result': Number.NaN,
+            'time_exec_last_result': max_execution_time,
             'number_result': 0,
         };
 
@@ -113,6 +113,7 @@ async function main() {
     rawSumaryResults[config] = {}
     let beginningIndexOutputFile = 0;
     await promiseSetTimeout(10 * 1_000);
+    let id_filter = 0;
     for (const filterExpression of filterExpressions) {
         console.log(`--------------filter expression: "${filterExpression}"--------------`)
         rawSumaryResults[config][filterExpression] = [];
@@ -123,9 +124,10 @@ async function main() {
             await promiseSetTimeout(10 * 1_000);
             console.log("Waited 10s");
             [sumary['number_request'], beginningIndexOutputFile] = getNumberOfRequest(beginningIndexOutputFile);
+            sumary['id_filter'] = id_filter;
             rawSumaryResults[config][filterExpression].push(sumary);
         }
-
+        id_filter+=1;
     }
     console.log(`--------------THE END--------------`);
     const sumaryResult = createSummary(rawSumaryResults);
@@ -138,18 +140,18 @@ async function main() {
 
 function createSummary(rawSumaryResults) {
     const sumary = {};
-    sumary['queries'] = [];
-    for (const [filterExpression, value] of Object.entries(rawSumaryResults[config])) {
+    sumary['queries'] = {};
+    for (const [filterExpression, values] of Object.entries(rawSumaryResults[config])) {
         const keys = ['time_exec_last_result', 'number_result', 'number_request'];
         const subSumary = {
-            'filter_expression': filterExpression,
-            'number_result': value[0]['number_result']
+            'number_result': values[0]['number_result'],
+            'id_filter': values[0]['id_filter']
         };
 
         for (const key of keys) {
-            subSumary[key] = calculateStat(value, key);
+            subSumary[key] = calculateStat(values, key);
         }
-        sumary['queries'].push(subSumary);
+        sumary['queries'][filterExpression] = subSumary;
     }
 
     sumary['n_repetition'] = nRepetition;
@@ -157,29 +159,29 @@ function createSummary(rawSumaryResults) {
     return sumary;
 }
 
-function calculateStat(value, key) {
+function calculateStat(values, key) {
     let max = Number.NEGATIVE_INFINITY;
     let min = Number.POSITIVE_INFINITY;
-    const timeExecValue = value.map((val) => {
-        const time = val[key];
-        if (time > max) {
-            max = time;
+    const stat_value = values.map((val) => {
+        const value = val[key];
+        if (value > max) {
+            max = value;
         }
 
-        if (time < min) {
-            min = time;
+        if (value < min) {
+            min = value;
         }
-        return time;
+        return value;
     });
 
     let meanTimeKey = 0;
-    for (const val of timeExecValue) {
+    for (const val of stat_value) {
         meanTimeKey += val;
     }
     meanTimeKey /= nRepetition;
 
     let varianceKey = 0;
-    for (const val of timeExecValue) {
+    for (const val of stat_value) {
         varianceKey += Math.pow(val - meanTimeKey, 2);
     }
     varianceKey /= nRepetition;
@@ -195,7 +197,8 @@ function calculateStat(value, key) {
         'avg': meanTimeKey || max_execution_time,
         'var': varianceKey || 0,
         'min': min || max_execution_time,
-        'max': max || max_execution_time
+        'max': max || max_execution_time,
+        'raw': stat_value
     };
 }
 
