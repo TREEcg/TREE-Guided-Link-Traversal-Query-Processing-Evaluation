@@ -4,6 +4,7 @@ import { basename } from 'node:path';
 
 // https://stackoverflow.com/questions/23327149/how-can-i-create-a-boxplot-for-each-x-value#
 // https://stackoverflow.com/questions/69793623/how-to-plot-grouped-boxplot-by-gnuplot
+// https://stackoverflow.com/questions/5483006/gnuplot-multiple-stacked-histograms-each-group-using-the-same-key
 const plotting_command = (unit, input_file, output_file) => {
     return `
 set style fill solid 0.25 border -1;
@@ -13,6 +14,7 @@ set style data boxplot;
 set xtics ('ALL' 1,'TREE' 2, 'TREE-guided' 3);
 set xlabel 'reachability criterium';
 set ylabel '${unit}';
+set logscale y;
 set term svg ;
 set output '${output_file}' ;
 
@@ -33,7 +35,7 @@ const config_name_files = [
 
 const unit = [
     'number of result',
-    "execution time (s)",
+    "execution time (ms)",
     "number of request"
 ]
 

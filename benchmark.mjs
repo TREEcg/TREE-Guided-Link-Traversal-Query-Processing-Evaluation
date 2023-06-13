@@ -37,7 +37,7 @@ FILTER(${filterExpression})
 };
 
 const nRepetition = 4;
-const max_execution_time = 60;
+const max_execution_time = 60_000;
 
 const filterExpressions = dataSourceInfo.filters;
 
