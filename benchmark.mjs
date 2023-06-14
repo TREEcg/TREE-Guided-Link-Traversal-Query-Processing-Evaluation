@@ -36,7 +36,7 @@ FILTER(${filterExpression})
 `
 };
 
-const nRepetition = 4;
+const nRepetition = 20;
 const max_execution_time = 60_000;
 
 const filterExpressions = dataSourceInfo.filters;
@@ -118,16 +118,16 @@ async function main() {
         console.log(`--------------filter expression: "${filterExpression}"--------------`)
         rawSumaryResults[config][filterExpression] = [];
         for (let i = 0; i < nRepetition; i++) {
-            console.log(`--------------repetition: ${i + 1} out of ${nRepetition}--------------`)
-            const query = protoQuery(filterExpression);
-            const sumary = await engineExecution(query);
-            await promiseSetTimeout(10 * 1_000);
-            console.log("Waited 10s");
-            [sumary['number_request'], beginningIndexOutputFile] = getNumberOfRequest(beginningIndexOutputFile);
-            sumary['id_filter'] = id_filter;
-            rawSumaryResults[config][filterExpression].push(sumary);
+            try {
+                await executeQuery(filterExpression, nRepetition, i, beginningIndexOutputFile, rawSumaryResults, id_filter)
+            } catch (e) {
+                console.log(`--------------second try because of--------------`);
+                console.error(e);
+                await executeQuery(filterExpression, nRepetition, i, beginningIndexOutputFile, rawSumaryResults, id_filter)
+            }
+
         }
-        id_filter+=1;
+        id_filter += 1;
     }
     console.log(`--------------THE END--------------`);
     const sumaryResult = createSummary(rawSumaryResults);
@@ -136,6 +136,17 @@ async function main() {
     fs.writeFileSync(resultFile, stringSumaryResult);
     console.log(`result file available at ${resultFile}`)
     return;
+}
+
+async function executeQuery(filterExpression, nRepetition, i, beginningIndexOutputFile, rawSumaryResults, id_filter) {
+    console.log(`--------------repetition: ${i + 1} out of ${nRepetition}--------------`)
+    const query = protoQuery(filterExpression);
+    const sumary = await engineExecution(query);
+    await promiseSetTimeout(10 * 1_000);
+    console.log("Waited 10s");
+    [sumary['number_request'], beginningIndexOutputFile] = getNumberOfRequest(beginningIndexOutputFile);
+    sumary['id_filter'] = id_filter;
+    rawSumaryResults[config][filterExpression].push(sumary);
 }
 
 function createSummary(rawSumaryResults) {
@@ -162,7 +173,7 @@ function createSummary(rawSumaryResults) {
 function calculateStat(values, key) {
     let max = Number.NEGATIVE_INFINITY;
     let min = Number.POSITIVE_INFINITY;
-    const stat_value = values.map((val) => {
+    const raw_values = values.map((val) => {
         const value = val[key];
         if (value > max) {
             max = value;
@@ -175,16 +186,16 @@ function calculateStat(values, key) {
     });
 
     let meanTimeKey = 0;
-    for (const val of stat_value) {
+    for (const val of raw_values) {
         meanTimeKey += val;
     }
     meanTimeKey /= nRepetition;
 
-    let varianceKey = 0;
-    for (const val of stat_value) {
-        varianceKey += Math.pow(val - meanTimeKey, 2);
+    let variance = 0;
+    for (const val of raw_values) {
+        variance += Math.pow(val - meanTimeKey, 2);
     }
-    varianceKey /= nRepetition;
+    variance /= nRepetition;
 
     if (!Number.isFinite(min)) {
         min = max_execution_time;
@@ -194,11 +205,11 @@ function calculateStat(values, key) {
         max = max_execution_time;
     }
     return {
-        'avg': meanTimeKey || max_execution_time,
-        'var': varianceKey || 0,
-        'min': min || max_execution_time,
-        'max': max || max_execution_time,
-        'raw': stat_value
+        'avg': Number.isFinite(meanTimeKey) === true ? meanTimeKey : max_execution_time,
+        'var': Number.isFinite(variance) === true ? variance : 0,
+        'min': Number.isFinite(min) === true ? min : max_execution_time,
+        'max': Number.isFinite(max) === true ? max : max_execution_time,
+        'raw': raw_values
     };
 }
 

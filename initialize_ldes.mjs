@@ -18,8 +18,7 @@ const supportedSource = new Map(Object.entries({
             '?t<"2022-08-07T08:28:02.000Z"^^xsd:dateTime',
             '?t>="2022-08-07T08:29:23.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime',
             'false',
-            '?t>"2100-08-07T08:37:12.000Z"^^xsd:dateTime',
-            '?t>"1800-08-07T08:37:12.000Z"^^xsd:dateTime',
+            'true',
         ]
     },
     'ship-LDES':
