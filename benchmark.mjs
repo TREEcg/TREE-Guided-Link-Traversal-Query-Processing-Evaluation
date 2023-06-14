@@ -2,10 +2,23 @@ import { QueryEngine } from "@comunica/query-sparql-link-traversal";
 import fs from 'fs';
 import { setTimeout as promiseSetTimeout } from "timers/promises";
 import path from "path";
+import { Command } from 'commander';
+
+const program = new Command();
+program
+    .name('benchmark')
+    .description('CLI program to run a TREE benchmark')
+    .version('0.0.0')
+
+    .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 20)
+    .parse(process.argv);
+
+const options = program.opts();
+const nRepetition = options.numberRepetition;
 
 const rootNode = "http://localhost:5000/sparql";
 const benchmark_folder = './benchmark';
-const config = process.env.COMUNICA_CONFIG;
+const config = process.env.COMUNICA_CONFIG || 'config_comunica_data_dump';
 const sparqlEndpointOutputFile = `${benchmark_folder}/output`;
 const dataSourceInfoPath = `${benchmark_folder}/source_config/data_source_info.json`
 const dataSourceInfo = JSON.parse(fs.readFileSync(dataSourceInfoPath));
@@ -24,6 +37,8 @@ if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory);
 }
 
+console.log(`will save at ${resultFile}`);
+
 const protoQuery = (filterExpression) => {
     return `
 PREFIX sosa: <http://www.w3.org/ns/sosa/> 
@@ -36,7 +51,6 @@ FILTER(${filterExpression})
 `
 };
 
-const nRepetition = 20;
 const max_execution_time = 60_000;
 
 const filterExpressions = dataSourceInfo.filters;

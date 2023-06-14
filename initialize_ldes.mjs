@@ -3,12 +3,14 @@ import { storeFromFile, TSMongoDBIngestorBTREE } from "@treecg/ldes-timeseries";
 import { Command } from 'commander';
 import fs from 'fs';
 
+// https://github.com/SolidLabResearch/LDES-in-SOLID-Semantic-Observations-Replay
+// https://dahcc.idlab.ugent.be/dataset.html
 
 const program = new Command();
 const supportedSource = new Map(Object.entries({
     'location-LDES':
     {
-        'path': './benchmark/data/location-LDES.ttl',
+        'path': './benchmark/data/location-LDES/data.ttl',
         'date_first_element': "2022-08-07T08:08:21Z",
         'name': 'location-LDES',
         'ldesIdentifier': 'http://localhost:3000/lil/#EventStream',

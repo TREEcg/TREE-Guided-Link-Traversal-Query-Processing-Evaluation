@@ -2,3 +2,6 @@
 	path = comunica-feature-link-traversal
 	url = https://github.com/constraintAutomaton/comunica-feature-link-traversal.git
 	branch = feature/time-filtering-tree-sparqlee-implementation
+[submodule "LDES-in-SOLID-Semantic-Observations-Replay"]
+	path = LDES-in-SOLID-Semantic-Observations-Replay
+	url = https://github.com/SolidLabResearch/LDES-in-SOLID-Semantic-Observations-Replay.git
