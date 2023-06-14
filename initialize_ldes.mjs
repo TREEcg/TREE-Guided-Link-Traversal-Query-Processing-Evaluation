@@ -10,7 +10,7 @@ const program = new Command();
 const supportedSource = new Map(Object.entries({
     'location-LDES':
     {
-        'path': './benchmark/data/location-LDES/data.ttl',
+        'path': './benchmark/data/location-LDES/data',
         'date_first_element': "2022-08-07T08:08:21Z",
         'name': 'location-LDES',
         'ldesIdentifier': 'http://localhost:3000/lil/#EventStream',
