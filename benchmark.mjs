@@ -10,16 +10,25 @@ program
     .description('CLI program to run a TREE benchmark')
     .version('0.0.0')
 
-    .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 20)
+    .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 10)
+    .option('-d, --demo-mode', "Don't record the results and do three repetition of two filter expression and triple pattern", false)
+    .option('-k, --keep-output-history', 'keep the history of the comunica output', true)
     .parse(process.argv);
 
 const options = program.opts();
-const nRepetition = options.numberRepetition;
+const demoMode = options.demoMode;
+const keepOutputHistory = options.keepOutputHistory;
+const nRepetition = demoMode ? 3 : options.numberRepetition;
+
+if (demoMode) {
+    console.log('DEMO MODE');
+}
 
 const rootNode = "http://localhost:5000/sparql";
 const benchmark_folder = './benchmark';
 const config = process.env.COMUNICA_CONFIG || 'config_comunica_data_dump';
 const sparqlEndpointOutputFile = `${benchmark_folder}/output`;
+const sparqlEndpointOutputHistoryFile = `${benchmark_folder}/output_history`;
 const dataSourceInfoPath = `${benchmark_folder}/source_config/data_source_info.json`
 const dataSourceInfo = JSON.parse(fs.readFileSync(dataSourceInfoPath));
 const flatTopology = (topology) => {
@@ -33,27 +42,37 @@ const flatTopology = (topology) => {
 const directory = `${benchmark_folder}/results/${dataSourceInfo.name}-${flatTopology(dataSourceInfo.topology)}`
 const resultFile = `${directory}/${path.basename(config, '.json')}.json`;
 
-if (!fs.existsSync(directory)) {
+if (!fs.existsSync(directory) && !demoMode) {
     fs.mkdirSync(directory);
 }
 
-console.log(`will save at ${resultFile}`);
+if (keepOutputHistory) {
+    fs.closeSync(fs.openSync(sparqlEndpointOutputHistoryFile, 'w'));
+}
 
-const protoQuery = (filterExpression) => {
+if (!demoMode) {
+    console.log(`will save at ${resultFile}`);
+}
+
+
+const protoQuery = (filterExpression, triple_paterns) => {
     return `
 PREFIX sosa: <http://www.w3.org/ns/sosa/> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 
-SELECT DISTINCT ?s ?t WHERE {
-    ?s sosa:resultTime ?t.
-FILTER(${filterExpression})
+SELECT * WHERE {
+    ${triple_paterns}
+    FILTER(${filterExpression})
 }
 `
 };
 
 const max_execution_time = 60_000;
 
-const filterExpressions = dataSourceInfo.filters;
+const filterExpressions = demoMode ? dataSourceInfo.filters.slice(0, 2) : dataSourceInfo.filters;
+const triplePatternsQuery = demoMode ? dataSourceInfo.triple_patterns_query.slice(0, 2) : dataSourceInfo.triple_patterns_query;
+
 
 const rawSumaryResults = {};
 const regexpSummary = /(TOTAL),([+-]?[0-9]*[.]?[0-9]+),([0-9]+)/;
@@ -124,61 +143,81 @@ async function main() {
     }
 
     console.log(`--------------${config}--------------`);
-    rawSumaryResults[config] = {}
-    let beginningIndexOutputFile = 0;
     await promiseSetTimeout(10 * 1_000);
     let id_filter = 0;
-    for (const filterExpression of filterExpressions) {
-        console.log(`--------------filter expression: "${filterExpression}"--------------`)
-        rawSumaryResults[config][filterExpression] = [];
-        for (let i = 0; i < nRepetition; i++) {
-            try {
-                await executeQuery(filterExpression, nRepetition, i, beginningIndexOutputFile, rawSumaryResults, id_filter)
-            } catch (e) {
-                console.log(`--------------second try because of--------------`);
-                console.error(e);
-                await executeQuery(filterExpression, nRepetition, i, beginningIndexOutputFile, rawSumaryResults, id_filter)
-            }
+    let id_triple_pattern = 0;
+    for (const triplePatternQuery of triplePatternsQuery) {
+        console.log(`--------------triple patterns inside the query: "${triplePatternQuery}"--------------`);
+        rawSumaryResults[triplePatternQuery] = {};
+        for (const filterExpression of filterExpressions) {
+            console.log(`--------------filter expression: "${filterExpression}"--------------`)
+            rawSumaryResults[triplePatternQuery][filterExpression] = [];
+            for (let i = 0; i < nRepetition; i++) {
+                try {
+                    await executeQuery(filterExpression,
+                        triplePatternQuery,
+                        nRepetition,
+                        i,
+                        rawSumaryResults,
+                        id_filter,
+                        id_triple_pattern)
+                } catch (e) {
+                    console.log(`--------------second try because of--------------`);
+                    console.error(e);
+                    await executeQuery(filterExpression,
+                        triplePatternQuery,
+                        nRepetition,
+                        i,
+                        rawSumaryResults,
+                        id_filter,
+                        id_triple_pattern)
+                }
 
+            }
+            id_filter += 1;
         }
-        id_filter += 1;
+        id_triple_pattern += 1;
     }
     console.log(`--------------THE END--------------`);
     const sumaryResult = createSummary(rawSumaryResults);
     const stringSumaryResult = JSON.stringify(sumaryResult, null, 4);
     console.log(`Sumary:\n${stringSumaryResult}`);
-    fs.writeFileSync(resultFile, stringSumaryResult);
+    if (!demoMode) {
+        fs.writeFileSync(resultFile, stringSumaryResult);
+    }
     console.log(`result file available at ${resultFile}`)
     return;
 }
 
-async function executeQuery(filterExpression, nRepetition, i, beginningIndexOutputFile, rawSumaryResults, id_filter) {
+async function executeQuery(filterExpression, triplePatternQuery, nRepetition, i, rawSumaryResults, id_filter, id_triple_pattern) {
     console.log(`--------------repetition: ${i + 1} out of ${nRepetition}--------------`)
-    const query = protoQuery(filterExpression);
+    const query = protoQuery(filterExpression, triplePatternQuery);
     const sumary = await engineExecution(query);
     await promiseSetTimeout(10 * 1_000);
     console.log("Waited 10s");
-    [sumary['number_request'], beginningIndexOutputFile] = getNumberOfRequest(beginningIndexOutputFile);
+    sumary['number_request'] = getNumberOfRequest();
     sumary['id_filter'] = id_filter;
-    rawSumaryResults[config][filterExpression].push(sumary);
+    sumary['id_triple_pattern'] = id_triple_pattern;
+    rawSumaryResults[triplePatternQuery][filterExpression].push(sumary);
 }
 
 function createSummary(rawSumaryResults) {
     const sumary = {};
-    sumary['queries'] = {};
-    for (const [filterExpression, values] of Object.entries(rawSumaryResults[config])) {
-        const keys = ['time_exec_last_result', 'number_result', 'number_request'];
-        const subSumary = {
-            'number_result': values[0]['number_result'],
-            'id_filter': values[0]['id_filter']
-        };
+    for (const [triple_patterns, values] of Object.entries(rawSumaryResults)) {
+        sumary[triple_patterns] = {};
+        for (const [filterExpression, results] of Object.entries(values)) {
+            const keys = ['time_exec_last_result', 'number_result', 'number_request'];
+            const subSumary = {
+                'number_result': results[0]['number_result'],
+                'id_filter': results[0]['id_filter']
+            };
 
-        for (const key of keys) {
-            subSumary[key] = calculateStat(values, key);
+            for (const key of keys) {
+                subSumary[key] = calculateStat(results, key);
+            }
+            sumary[triple_patterns][filterExpression] = subSumary;
         }
-        sumary['queries'][filterExpression] = subSumary;
     }
-
     sumary['n_repetition'] = nRepetition;
     sumary['config'] = config;
     return sumary;
@@ -227,18 +266,12 @@ function calculateStat(values, key) {
     };
 }
 
-const statementStartQuery = "got assigned a new query";
-function getNumberOfRequest(beginningIndex) {
+function getNumberOfRequest() {
     const sparqlEndpointOutput = fs.readFileSync(sparqlEndpointOutputFile).toString();
-    const firstOccurrence = sparqlEndpointOutput.indexOf(statementStartQuery, beginningIndex);
-    if (firstOccurrence === -1) {
-        throw new Error('there is no request in the output file');
-    }
-    const indexEndRequest = sparqlEndpointOutput.indexOf(statementStartQuery, firstOccurrence + statementStartQuery.length + 1) !== -1 ?
-        sparqlEndpointOutput.indexOf(statementStartQuery, firstOccurrence + statementStartQuery.length + 1) : sparqlEndpointOutput.length;
-    const zoneOfInterest = sparqlEndpointOutput.substring(beginningIndex, indexEndRequest);
-    const nRequest = (zoneOfInterest.match(/Requesting/g) || []).length;
-    return [nRequest, indexEndRequest + statementStartQuery.length + 1];
+    const nRequest = (sparqlEndpointOutput.match(/Requesting/g) || []).length;
+    fs.writeFileSync(sparqlEndpointOutputFile, '');
+    fs.appendFileSync(sparqlEndpointOutputHistoryFile, sparqlEndpointOutput);
+    return nRequest;
 }
 
 await main();

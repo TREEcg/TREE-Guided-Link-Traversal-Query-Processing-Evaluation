@@ -16,9 +16,22 @@ const supportedSource = new Map(Object.entries({
             '?t>="2022-08-07T08:29:23.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime',
             'false',
             'true',
+            '?t>="2022-08-07T08:22:36Z"^^xsd:dateTime &&  ?latitude>=50.971924'
+        ],
+        'triple_patterns_query':[
+            '?s sosa:resultTime ?t.',
+            `?s sosa:resultTime ?t.
+             ?s sosa:madeBySensor ?sensor.   
+            `,
+            `
+            ?s sosa:resultTime ?t.
+            ?s sosa:hasResult ?result.
+            ?result wgs:latitude ?latitude.
+            ?result wgs:longitude ?latitude.
+            `
         ],
         'topology': {
-            'n_member': 447
+            'n_member': 446
         }
     }
 }));

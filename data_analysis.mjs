@@ -10,7 +10,8 @@ import { Command } from 'commander';
 
 const RESULTS_PATHS = [
     "./benchmark/results/location-LDES-page_size_20_layerSize_10",
-    "./benchmark/results/location-LDES-page_size_1_layerSize_447"
+    "./benchmark/results/location-LDES-page_size_1_layerSize_446",
+    "./benchmark/results/location-LDES-page_size_5_layerSize_5"
 ];
 
 const RESULT_FIELDS = [
