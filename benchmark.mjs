@@ -68,7 +68,12 @@ SELECT * WHERE {
 `
 };
 
-const max_execution_time = 60_000;
+const max_execution_time = process.env.COMUNICA_TIMEOUT;
+if(!max_execution_time) {
+    throw new Error('The env variable COMUNICA_TIMEOUT is not defined');
+}
+
+const waiting_time_sec = 5;
 
 const filterExpressions = demoMode ? dataSourceInfo.filters.slice(0, 2) : dataSourceInfo.filters;
 const triplePatternsQuery = demoMode ? dataSourceInfo.triple_patterns_query.slice(0, 2) : dataSourceInfo.triple_patterns_query;
@@ -143,7 +148,7 @@ async function main() {
     }
 
     console.log(`--------------${config}--------------`);
-    await promiseSetTimeout(10 * 1_000);
+    await promiseSetTimeout(waiting_time_sec * 1_000);
     let id_filter = 0;
     let id_triple_pattern = 0;
     for (const triplePatternQuery of triplePatternsQuery) {
@@ -194,7 +199,7 @@ async function executeQuery(filterExpression, triplePatternQuery, nRepetition, i
     const query = protoQuery(filterExpression, triplePatternQuery);
     const sumary = await engineExecution(query);
     await promiseSetTimeout(10 * 1_000);
-    console.log("Waited 10s");
+    console.log(`Waited ${waiting_time_sec}s`);
     sumary['number_request'] = getNumberOfRequest();
     sumary['id_filter'] = id_filter;
     sumary['id_triple_pattern'] = id_triple_pattern;
