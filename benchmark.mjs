@@ -68,12 +68,12 @@ SELECT * WHERE {
 `
 };
 
-const max_execution_time = Number(process.env.COMUNICA_TIMEOUT) * 1000;
-if(!max_execution_time) {
+const maxExecutionTime = Number(process.env.COMUNICA_TIMEOUT) * 1000;
+if (!maxExecutionTime) {
     throw new Error('The env variable COMUNICA_TIMEOUT is not defined');
 }
 
-const waiting_time_sec = 5;
+const waitingTimeSec = 5;
 
 const filterExpressions = demoMode ? dataSourceInfo.filters.slice(0, 2) : dataSourceInfo.filters;
 const triplePatternsQuery = demoMode ? dataSourceInfo.triple_patterns_query.slice(0, 2) : dataSourceInfo.triple_patterns_query;
@@ -96,7 +96,7 @@ async function engineExecution(query) {
             'stats');
         let nRes = 0;
         let summary = {
-            'time_exec_last_result': max_execution_time,
+            'time_exec_last_result': maxExecutionTime,
             'number_result': 0,
         };
 
@@ -148,7 +148,7 @@ async function main() {
     }
 
     console.log(`--------------${config}--------------`);
-    await promiseSetTimeout(waiting_time_sec * 1_000);
+    await promiseSetTimeout(waitingTimeSec * 1_000);
     let id_filter = 0;
     let id_triple_pattern = 0;
     for (const triplePatternQuery of triplePatternsQuery) {
@@ -185,17 +185,19 @@ async function main() {
         id_triple_pattern += 1;
     }
     console.log(`--------------THE END--------------`);
-    await save_result(rawSumaryResults);
+    await save_result(rawSumaryResults, true);
     console.log(`result file available at ${resultFile}`);
     return;
 }
 
-async function save_result(rawSumaryResults) {
+async function save_result(rawSumaryResults, print_result = false) {
     const sumaryResult = createSummary(rawSumaryResults);
     const stringSumaryResult = JSON.stringify(sumaryResult, null, 4);
-    console.log(`Sumary:\n${stringSumaryResult}`);
+    if (print_result) {
+        console.log(`Sumary:\n${stringSumaryResult}`);
+    }
     if (!demoMode) {
-        fs.writeFile(resultFile, stringSumaryResult, ()=>{
+        fs.writeFile(resultFile, stringSumaryResult, () => {
             console.log(`result file available at ${resultFile}`)
         });
     }
@@ -205,8 +207,8 @@ async function executeQuery(filterExpression, triplePatternQuery, nRepetition, i
     console.log(`--------------repetition: ${i + 1} out of ${nRepetition}--------------`)
     const query = protoQuery(filterExpression, triplePatternQuery);
     const sumary = await engineExecution(query);
-    await promiseSetTimeout(waiting_time_sec* 1_000);
-    console.log(`Waited ${waiting_time_sec}s`);
+    await promiseSetTimeout(waitingTimeSec * 1_000);
+    console.log(`Waited ${waitingTimeSec}s`);
     sumary['number_request'] = getNumberOfRequest();
     sumary['id_filter'] = id_filter;
     sumary['id_triple_pattern'] = id_triple_pattern;
@@ -264,17 +266,17 @@ function calculateStat(values, key) {
     variance /= nRepetition;
 
     if (!Number.isFinite(min)) {
-        min = max_execution_time;
+        min = maxExecutionTime;
     }
 
     if (!Number.isFinite(max)) {
-        max = max_execution_time;
+        max = maxExecutionTime;
     }
     return {
-        'avg': Number.isFinite(meanTimeKey) === true ? meanTimeKey : max_execution_time,
+        'avg': Number.isFinite(meanTimeKey) === true ? meanTimeKey : maxExecutionTime,
         'var': Number.isFinite(variance) === true ? variance : 0,
-        'min': Number.isFinite(min) === true ? min : max_execution_time,
-        'max': Number.isFinite(max) === true ? max : max_execution_time,
+        'min': Number.isFinite(min) === true ? min : maxExecutionTime,
+        'max': Number.isFinite(max) === true ? max : maxExecutionTime,
         'raw': raw_values
     };
 }
