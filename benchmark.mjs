@@ -255,7 +255,7 @@ function calculateStat(values, key) {
     for (const val of raw_values) {
         meanTimeKey += val;
     }
-    meanTimeKey /= nRepetition;
+    meanTimeKey /= raw_values.length;
 
     let variance = 0;
     for (const val of raw_values) {
