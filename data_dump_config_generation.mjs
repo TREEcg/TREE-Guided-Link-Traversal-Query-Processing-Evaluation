@@ -2,39 +2,14 @@ import { Command } from 'commander';
 import fs from 'fs';
 
 const program = new Command();
-const supportedSource = new Map(Object.entries({
-    'location-LDES':
-    {
-        'path': './benchmark/data/location-LDES/data.ttl',
-        'date_first_element': "2022-08-07T08:08:21Z",
-        'name': 'location-LDES',
-        'ldesIdentifier': 'http://localhost:3000/lil/#EventStream',
-        'filters': [
-            '?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime',
-            `(?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime) || (?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime &&  ?t>="2022-08-07T08:22:16.000Z"^^xsd:dateTime)`,
-            '?t<"2022-08-07T08:28:02.000Z"^^xsd:dateTime',
-            '?t>="2022-08-07T08:29:23.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime',
-            'false',
-            'true',
-            '?t>="2022-08-07T08:22:36Z"^^xsd:dateTime &&  ?latitude>=50.971924'
-        ],
-        'triple_patterns_query':[
-            '?s sosa:resultTime ?t.',
-            `?s sosa:resultTime ?t.
-             ?s sosa:madeBySensor ?sensor.   
-            `,
-            `
-            ?s sosa:resultTime ?t.
-            ?s sosa:hasResult ?result.
-            ?result wgs:latitude ?latitude.
-            ?result wgs:longitude ?latitude.
-            `
-        ],
-        'topology': {
-            'n_member': 446
-        }
-    }
-}));
+const configDataFilePath = 'benchmark/data/config.json';
+const configDataFile = JSON.parse(fs.readFileSync(configDataFilePath).toString());
+
+const supportedSource = new Map(Object.entries(configDataFile));
+supportedSource.get('location-LDES')['topology'] = {
+    'n_member': 446
+};
+
 const configPath = './benchmark/source_config/data_source_info.json';
 
 program

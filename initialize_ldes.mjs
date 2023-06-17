@@ -6,50 +6,10 @@ import fs from 'fs';
 // https://github.com/SolidLabResearch/LDES-in-SOLID-Semantic-Observations-Replay
 // https://dahcc.idlab.ugent.be/dataset.html
 
+const configDataFilePath = 'benchmark/data/config.json';
+const configDataFile = JSON.parse(fs.readFileSync(configDataFilePath).toString());
 const program = new Command();
-const supportedSource = new Map(Object.entries({
-    'location-LDES':
-    {
-        'path': './benchmark/data/location-LDES/data.ttl',
-        'date_first_element': "2022-08-07T08:08:21Z",
-        'name': 'location-LDES',
-        'ldesIdentifier': 'http://localhost:3000/lil/#EventStream',
-        'filters': [
-            '?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime',
-            `(?t>="2022-08-07T08:30:45.000Z"^^xsd:dateTime && ?t<"2022-08-07T08:38:50.000Z"^^xsd:dateTime) || (?t<"2022-08-07T08:30:45.000Z"^^xsd:dateTime &&  ?t>="2022-08-07T08:22:16.000Z"^^xsd:dateTime)`,
-            '?t<"2022-08-07T08:28:02.000Z"^^xsd:dateTime',
-            '?t="2022-08-07T08:18:31Z"^^xsd:dateTime',
-            'false',
-            'true',
-            '?t>="2022-08-07T08:22:36Z"^^xsd:dateTime &&  ?latitude>=50.971924'
-        ],
-        'triple_patterns_query':[
-            '?s sosa:resultTime ?t.',
-            `?s sosa:resultTime ?t.
-             ?s sosa:madeBySensor ?sensor.   
-            `,
-            `
-            ?s sosa:resultTime ?t.
-            ?s sosa:hasResult ?result.
-            ?result wgs:latitude ?latitude.
-            `,
-            `
-            ?s sosa:resultTime ?t.
-            ?s sosa:hasResult ?result.
-            ?result wgs:latitude ?latitude.
-            ?result wgs:longitude ?longitude.
- 			?result wgs:elevation 8.4 .
-            `
-        ]
-    },
-    'ship-LDES':
-    {
-        'path': './benchmark/data/ship-LDES.ttl',
-        'date_first_element': "2021-08-18T14:05:18.000Z",
-        'name': 'ship-LDES',
-        'ldesIdentifier': 'http://www.example.com/ldes'
-    }
-}));
+const supportedSource = new Map(Object.entries(configDataFile));
 const configPath = './benchmark/source_config/data_source_info.json';
 
 
@@ -58,9 +18,9 @@ program
     .description('CLI program to initialize an LDES time serie for benchmarking of link traversal query processing SPARQL query engine')
     .version('0.0.0')
 
-    .requiredOption('-p, --page-size <number>', 'The number of members per leaf nodes.')
-    .requiredOption('-l, --layer-size <number>', 'The number of relation per node.')
-    .requiredOption('-s, --source <option>', 'The data source file. Can be either "location-ldes" or "ship-LDES" ')
+    .requiredOption('-p, --page-size <number>', 'The number of members per leaf nodes.', 20)
+    .requiredOption('-l, --layer-size <number>', 'The number of relation per node.', 10)
+    .requiredOption('-s, --source <string>', 'The data source file. Can be either "location-LDES" or "ship-LDES"', 'location-LDES')
     .parse(process.argv);
 
 const options = program.opts();

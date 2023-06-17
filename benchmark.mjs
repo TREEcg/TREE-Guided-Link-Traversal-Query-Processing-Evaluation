@@ -68,7 +68,7 @@ SELECT * WHERE {
 `
 };
 
-const max_execution_time = process.env.COMUNICA_TIMEOUT;
+const max_execution_time = Number(process.env.COMUNICA_TIMEOUT) * 1000;
 if(!max_execution_time) {
     throw new Error('The env variable COMUNICA_TIMEOUT is not defined');
 }
@@ -153,6 +153,7 @@ async function main() {
     let id_triple_pattern = 0;
     for (const triplePatternQuery of triplePatternsQuery) {
         console.log(`--------------triple patterns inside the query: "${triplePatternQuery}"--------------`);
+        id_filter = 0;
         rawSumaryResults[triplePatternQuery] = {};
         for (const filterExpression of filterExpressions) {
             console.log(`--------------filter expression: "${filterExpression}"--------------`)
