@@ -10,7 +10,7 @@ program
     .description('CLI program to run a TREE benchmark')
     .version('0.0.0')
 
-    .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 10)
+    .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 20)
     .option('-d, --demo-mode', "Don't record the results and do three repetition of two filter expression and triple pattern", false)
     .option('-k, --keep-output-history', 'keep the history of the comunica output', true)
     .parse(process.argv);
@@ -185,26 +185,33 @@ async function main() {
         id_triple_pattern += 1;
     }
     console.log(`--------------THE END--------------`);
+    await save_result(rawSumaryResults);
+    console.log(`result file available at ${resultFile}`);
+    return;
+}
+
+async function save_result(rawSumaryResults) {
     const sumaryResult = createSummary(rawSumaryResults);
     const stringSumaryResult = JSON.stringify(sumaryResult, null, 4);
     console.log(`Sumary:\n${stringSumaryResult}`);
     if (!demoMode) {
-        fs.writeFileSync(resultFile, stringSumaryResult);
+        fs.writeFile(resultFile, stringSumaryResult, ()=>{
+            console.log(`result file available at ${resultFile}`)
+        });
     }
-    console.log(`result file available at ${resultFile}`)
-    return;
 }
 
 async function executeQuery(filterExpression, triplePatternQuery, nRepetition, i, rawSumaryResults, id_filter, id_triple_pattern) {
     console.log(`--------------repetition: ${i + 1} out of ${nRepetition}--------------`)
     const query = protoQuery(filterExpression, triplePatternQuery);
     const sumary = await engineExecution(query);
-    await promiseSetTimeout(10 * 1_000);
+    await promiseSetTimeout(waiting_time_sec* 1_000);
     console.log(`Waited ${waiting_time_sec}s`);
     sumary['number_request'] = getNumberOfRequest();
     sumary['id_filter'] = id_filter;
     sumary['id_triple_pattern'] = id_triple_pattern;
     rawSumaryResults[triplePatternQuery][filterExpression].push(sumary);
+    save_result(rawSumaryResults);
 }
 
 function createSummary(rawSumaryResults) {
