@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 function cleanDocker {
     (docker stop $(docker ps -a -q) && docker container prune) || true
