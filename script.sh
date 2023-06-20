@@ -42,6 +42,14 @@ function liberateSPARQLEndpointPort {
     (fuser -k 5000/tcp || true)
 }
 
+function liberateLDESHostingPort {
+    (fuser -k 3000/tcp || true)
+}
+
+function liberateDataDumpPort {
+    (fuser -k 8080/tcp || true)
+}
+
 function createNewOutputFile {
     rm ./benchmark/output -f && touch ./benchmark/output
 }
@@ -71,6 +79,7 @@ function benchmarkFollowTree {
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:3000/ldes/test
     protoBenchmark
+    liberateLDESHostingPort
 }
 
 function benchmarkFollowTreeSolver {
@@ -78,6 +87,7 @@ function benchmarkFollowTreeSolver {
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:3000/ldes/test
     protoBenchmark
+    liberateLDESHostingPort
 }
 
 function benchmarkFollowAll {
@@ -85,6 +95,7 @@ function benchmarkFollowAll {
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:3000/ldes/test
     protoBenchmark
+    liberateLDESHostingPort
 }
 
 function benchmarkFollowDataDump {
@@ -92,4 +103,9 @@ function benchmarkFollowDataDump {
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:8080/data.ttl
     protoBenchmark
+    liberateDataDumpPort
+}
+
+function usage {
+    cat usage
 }

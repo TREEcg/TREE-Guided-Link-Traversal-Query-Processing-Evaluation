@@ -1,0 +1,11 @@
+Runner of the benchmark
+    run_benchmark $(dataSource <string>) [--all] [--tree] [--tree-solver] [--demo]
+
+    dataSource: the to be benchmarked can be:
+        - ....
+    --every-config: apply all the configuration
+    --all: apply the follow all reachability criteria
+    --tree: apply the follow TREE reachability criteria
+    --tree-solver: apply the follow TREE-GUIDED reachability criteria
+    --data-dump: benchmark the data dump
+    --demo: apply the demo mode
