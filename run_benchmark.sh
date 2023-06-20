@@ -33,7 +33,7 @@ while [ "$1" != "" ]; do
         ;;
     --data-dump)
         data_dump_config=true
-        echo going to test the data dumo
+        echo going to test the data dump
         ;;
     -h | --help)
         usage
