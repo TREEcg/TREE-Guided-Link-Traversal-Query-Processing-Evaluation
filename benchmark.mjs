@@ -3,6 +3,7 @@ import fs from 'fs';
 import { setTimeout as promiseSetTimeout } from "timers/promises";
 import path from "path";
 import { Command } from 'commander';
+import  * as https  from 'https';
 
 const program = new Command();
 program
@@ -211,7 +212,7 @@ async function executeQuery(filterExpression, triplePatternQuery, nRepetition, i
     console.log(`Waited ${waitingTimeSec}s`);
     const [nRequest, urlsRequested] = getRequestionInfo();
     sumary['number_request'] = nRequest;
-    sumary['requested_url'] = urlsRequested;
+    sumary['request_size'] = await getSizeRequests(urlsRequested);
     sumary['id_filter'] = id_filter;
     sumary['id_triple_pattern'] = id_triple_pattern;
     rawSumaryResults[triplePatternQuery][filterExpression].push(sumary);
@@ -223,10 +224,9 @@ function createSummary(rawSumaryResults) {
     for (const [triple_patterns, values] of Object.entries(rawSumaryResults)) {
         sumary[triple_patterns] = {};
         for (const [filterExpression, results] of Object.entries(values)) {
-            const keys = ['time_exec_last_result', 'number_result', 'number_request'];
+            const keys = ['time_exec_last_result', 'number_result', 'number_request', 'request_size'];
             const subSumary = {
                 'id_filter': results[0]['id_filter'],
-                'requested_url':results[0]['requested_url']
             };
 
             for (const key of keys) {
@@ -283,15 +283,40 @@ function calculateStat(values, key) {
     };
 }
 
+async function getSizeRequests(requests) {
+    let sizesRequests = 0;
+    for (const request_url of requests) {
+        const requestSize = await new Promise((resolve, _reject) => {
+            const uri = new URL(request_url);
+            const { get } = uri.protocol === 'https:' ? https : http;
+            get(request_url, res => {
+                let body = '';
+                res.on('data', chunk => {
+                    body += chunk;
+                });
+                res.on('error', () => {
+                    console.log(error)
+                    resolve(0);
+                });
+                res.on('end', () => {
+                    resolve(Buffer.byteLength(body, 'utf8'));
+                });
+            });
+        });
+        sizesRequests += requestSize;
+    }
+    return sizesRequests;
+}
+
 function getRequestionInfo() {
     const sparqlEndpointOutput = fs.readFileSync(sparqlEndpointOutputFile).toString();
     const regex = /Requesting (http[s]?:(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+)/g;
-    const matchRequest = sparqlEndpointOutput.matchAll(regex) ;
+    const matchRequest = sparqlEndpointOutput.matchAll(regex);
     let nRequest = 0;
     const links = [];
     for (const match of matchRequest) {
         links.push(match[1]);
-        nRequest+=1;
+        nRequest += 1;
     }
     fs.writeFileSync(sparqlEndpointOutputFile, '');
     fs.appendFileSync(sparqlEndpointOutputHistoryFile, sparqlEndpointOutput);
