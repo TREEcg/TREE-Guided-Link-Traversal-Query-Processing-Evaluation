@@ -7,5 +7,4 @@ Runner of the benchmark
     --all: apply the follow all reachability criteria
     --tree: apply the follow TREE reachability criteria
     --tree-solver: apply the follow TREE-GUIDED reachability criteria
-    --data-dump: benchmark the data dump
     --demo: apply the demo mode
