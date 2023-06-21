@@ -115,7 +115,6 @@ function benchmarkFollowDataDump {
     DATASOURCE_PATH=http://localhost:8080/data.ttl
     protoBenchmark $DATASOURCE_PATH $1
     unset NODE_OPTIONS
-    liberateDataDumpPort
 }
 
 function usage {
