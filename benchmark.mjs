@@ -3,7 +3,9 @@ import fs from 'fs';
 import { setTimeout as promiseSetTimeout } from "timers/promises";
 import path from "path";
 import { Command } from 'commander';
-import  * as https  from 'https';
+import  * as https  from 'node:https';
+import * as http from 'node:http';
+
 
 const program = new Command();
 program
@@ -61,6 +63,7 @@ const protoQuery = (filterExpression, triple_paterns) => {
 PREFIX sosa: <http://www.w3.org/ns/sosa/> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX etsi: <https://saref.etsi.org/core/>
 
 SELECT * WHERE {
     ${triple_paterns}
@@ -74,7 +77,7 @@ if (!maxExecutionTime) {
     throw new Error('The env variable COMUNICA_TIMEOUT is not defined');
 }
 
-const waitingTimeSec = 5;
+const waitingTimeSec = 1;
 
 const filterExpressions = demoMode ? dataSourceInfo.filters.slice(0, 2) : dataSourceInfo.filters;
 const triplePatternsQuery = demoMode ? dataSourceInfo.triple_patterns_query.slice(0, 2) : dataSourceInfo.triple_patterns_query;
@@ -290,16 +293,16 @@ async function getSizeRequests(requests) {
             const uri = new URL(request_url);
             const { get } = uri.protocol === 'https:' ? https : http;
             get(request_url, res => {
-                let body = '';
+                let byte_size = 0;
                 res.on('data', chunk => {
-                    body += chunk;
+                    byte_size += Buffer.byteLength(chunk, 'utf8');
                 });
                 res.on('error', () => {
                     console.log(error)
                     resolve(0);
                 });
                 res.on('end', () => {
-                    resolve(Buffer.byteLength(body, 'utf8'));
+                    resolve(byte_size);
                 });
             });
         });
