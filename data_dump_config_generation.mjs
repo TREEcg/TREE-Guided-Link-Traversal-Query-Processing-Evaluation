@@ -10,6 +10,9 @@ supportedSource.get('location-LDES')['topology'] = {
     'n_member': 446
 };
 
+supportedSource.get('dahcc-1-participant')['topology'] = {
+    'n_member': 1_041_465
+};
 const configPath = './benchmark/source_config/data_source_info.json';
 
 program

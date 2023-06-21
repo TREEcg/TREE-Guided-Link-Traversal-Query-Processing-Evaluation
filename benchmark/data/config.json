@@ -3,7 +3,7 @@
         "path": "./benchmark/data/location-LDES/data.ttl",
         "date_first_element": "2022-08-07T08:08:21Z",
         "name": "location-LDES",
-        "ldesIdentifier": "http: //localhost:3000/lil/#EventStream",
+        "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
         "filters": [
             "?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime",
             "(?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime) || (?t<\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime &&  ?t>=\"2022-08-07T08:22:16.000Z\"^^xsd:dateTime)",
@@ -25,5 +25,19 @@
         "date_first_element": "2021-08-18T14:05:18.000Z",
         "name": "ship-LDES",
         "ldesIdentifier": "http: //www.example.com/ldes"
+    },
+    "dahcc-1-participant": {
+        "path": "./benchmark/data/dahcc_1_participant/data.ttl",
+        "name": "dahcc-1-participant",
+        "filters": [
+            "false",
+            "true"
+        ],
+        "triple_patterns_query": [
+            "?s etsi:hasTimestamp ?t.",
+            "?s etsi:hasTimestamp ?t. ?s etsi:relatesToProperty ?property.",
+            "?s etsi:hasTimestamp ?t. ?s etsi:hasValue ?result.",
+            "?s etsi:hasTimestamp ?t. ?s etsi:hasValue ?result. ?s etsi:measurementMadeBy <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/mqtt.steinelHPD2.kitchen>"
+        ]
     }
 }
