@@ -1,3 +1,5 @@
 ship-LDES.ttl
-dahcc
-dahcc_1_participant
+dahcc/*
+!dahcc/.gitkeep
+dahcc_1_participant/*
+!dahcc_1_participant/.gitkeep

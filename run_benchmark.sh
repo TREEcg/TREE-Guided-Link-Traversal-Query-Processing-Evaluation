@@ -35,6 +35,8 @@ while [ "$1" != "" ]; do
     --demo)
         demo=1
         ;;
+    --download-dataset)
+        downloadDahcc1ParticipantDataset
     -h | --help)
         usage
         ;;

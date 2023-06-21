@@ -117,6 +117,12 @@ function benchmarkFollowDataDump {
     unset NODE_OPTIONS
 }
 
+function downloadDahcc1ParticipantDataset { 
+    curl https://dahcc.idlab.ugent.be/data/data_kg/dataset_participant31.nt.gz > ./benchmark/data/dahcc_1_participant/archive.nt.gz
+    gzip -d -c ./benchmark/data/dahcc_1_participant/archive.nt.gz > ./benchmark/data/dahcc_1_participant/data.ttl
+    rm ./benchmark/data/dahcc_1_participant/archive.nt.gz
+}
+
 function usage {
     cat usage
 }
