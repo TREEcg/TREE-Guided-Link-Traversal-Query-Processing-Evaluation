@@ -70,7 +70,7 @@ case $data_source in
     location-LDES-20-10)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataDourceLocationLdes_20_10Topology &
+        startDataDourceLocationLdes_20_10Topology 
         ;;
     location-LDES-5-5)
         liberateLDESHostingPort

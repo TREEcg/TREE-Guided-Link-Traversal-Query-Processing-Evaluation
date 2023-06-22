@@ -23,6 +23,7 @@
     },
     "dahcc-1-participant": {
         "path": "./evaluation/data/dahcc_1_participant/data.ttl",
+        "date_first_element": "2022-01-03T19:54:49.452000",
         "name": "dahcc-1-participant",
         "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
         "timestampPath": "https://saref.etsi.org/core/hasTimestamp",
