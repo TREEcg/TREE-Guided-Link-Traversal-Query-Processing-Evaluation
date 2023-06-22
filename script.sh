@@ -36,7 +36,7 @@ function startDataDourceLocationLdes_1_446Topology {
 function startDataDourceLocationLdes_20_10Topology {
     cleanDocker
     startMongo &
-    node --max-old-space-size=8000 initialize_b_tree_ldes.mjs -p 20 -l 10 -s 'dahcc-1-participant'
+    node --max-old-space-size=8000 initialize_b_tree_ldes.mjs -p 20 -l 10 -s 'location-LDES'
     startEvaluationServer &
 }
 
