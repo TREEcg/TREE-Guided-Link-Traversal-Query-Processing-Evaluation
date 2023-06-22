@@ -4,32 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start-mongo": "docker run -d -p 27017:27017 --name mongo-comunica-filter-benchmark mongo:latest",
-    
-    "start-benchmark-server": "npx community-solid-server -c ./benchmark/config.json -f ./benchmark/data",
-    
-    "start-data-source-location-ldes-1-446-topology": "yarn clean-docker && yarn start-mongo && node initialize_ldes.mjs -p 1 -l 446 -s 'location-LDES' && yarn start-benchmark-server",
-    "start-data-source-location-ldes-20-10-topology": "yarn clean-docker && yarn start-mongo && node initialize_ldes.mjs -p 20 -l 10 -s 'location-LDES' && yarn start-benchmark-server",
-    "start-data-source-location-ldes-5-5-topology": "yarn clean-docker && yarn start-mongo && node initialize_ldes.mjs -p 5 -l 5 -s 'location-LDES' && yarn start-benchmark-server",
-    "start-data-source-location-data-dump": "node data_dump_config_generation.mjs -s 'location-LDES' && npx http-server ./benchmark/data/location-LDES -p 8080",
-
-    "benchmark-follow-all": "(export COMUNICA_CONFIG='./benchmark/config_comunica_follow_all.json'; yarn set-SPARQL-config) ; ((yarn liberate-SPARQL-endpoint-port && yarn create-new-output-file && (yarn create-SPARQL-enpoint) &> ./benchmark/output) & (yarn run-benchmark ; yarn liberate-SPARQL-endpoint-port ))",
-    "benchmark-follow-tree": "((fuser -k 5000/tcp || true) && rm ./benchmark/output -f && touch ./benchmark/output && export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree.json'; (node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js http://localhost:3000/ldes/test -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient) &> ./benchmark/output) & (export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree.json' && export COMUNICA_TIMEOUT=60 && (sleep 5 && node benchmark.mjs -d && fuser -k 5000/tcp))",
-    "benchmark-follow-tree-solver": "((fuser -k 5000/tcp || true) && rm ./benchmark/output -f && touch ./benchmark/output && export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree_solver.json'; (node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js http://localhost:3000/ldes/test -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient) &> ./benchmark/output) & (export COMUNICA_CONFIG='./benchmark/config_comunica_follow_tree_solver.json' && export COMUNICA_TIMEOUT=60 && (sleep 5 && node benchmark.mjs && fuser -k 5000/tcp))",
-    "benchmark-all-traversal-config":"yarn benchmark-follow-tree-solver && yarn benchmark-follow-tree && yarn benchmark-follow-all",
-
-    "benchmark-data-dump": "((fuser -k 5000/tcp || true) && rm ./benchmark/output -f && touch ./benchmark/output && unset COMUNICA_CONFIG && export COMUNICA_TIMEOUT=60; (comunica-sparql-http http://localhost:8080/data.ttl -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient) &> ./benchmark/output) & (export COMUNICA_TIMEOUT=60 && (sleep 5 && node benchmark.mjs -d && fuser -k 5000/tcp))",
-    
-    "clean-docker": "(docker stop $(docker ps -a -q) && docker container prune) || true",
-
-    "liberate-SPARQL-endpoint-port": "(fuser -k 5000/tcp || true)",
-    "create-new-output-file": "rm ./benchmark/output -f && touch ./benchmark/output",
-    "create-SPARQL-enpoint": "node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $DATASOURCE_PATH -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient",
-    "run-benchmark":"sleep 5 && node benchmark.mjs -d",
-    "set-SPARQL-config": "export COMUNICA_TIMEOUT=60; export DATASOURCE_PATH=http://localhost:3000/ldes/test && sleep 5"
   },
   "author": "Bryan-Elliott TAM",
-  "license": "",
   "dependencies": {
     "@comunica/actor-extract-links-tree": "file:./comunica-feature-link-traversal/packages/actor-extract-links-extract-tree",
     "@comunica/query-sparql-link-traversal": "file:./comunica-feature-link-traversal/engines/query-sparql-link-traversal",
