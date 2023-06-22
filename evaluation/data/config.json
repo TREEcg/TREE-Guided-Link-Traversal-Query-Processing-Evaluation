@@ -4,6 +4,7 @@
         "date_first_element": "2022-08-07T08:08:21Z",
         "name": "location-LDES",
         "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
+        "timestampPath": "http://www.w3.org/ns/sosa/resultTime",
         "filters": [
             "?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime",
             "(?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime) || (?t<\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime &&  ?t>=\"2022-08-07T08:22:16.000Z\"^^xsd:dateTime)",
@@ -23,6 +24,8 @@
     "dahcc-1-participant": {
         "path": "./evaluation/data/dahcc_1_participant/data.ttl",
         "name": "dahcc-1-participant",
+        "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
+        "timestampPath": "https://saref.etsi.org/core/hasTimestamp",
         "filters": [
             "false",
             "true"

@@ -54,7 +54,7 @@ async function initialized_ldes() {
     const viewDescriptionIdentifier = "http://example.org/myStream#viewDescription";
 
     const ldesTSConfig = {
-        timestampPath: "http://www.w3.org/ns/sosa/resultTime",
+        timestampPath: dataSource.timestampPath,
         pageSize: pageSize,
         date: new Date(dataSource.date_first_element)
     }
