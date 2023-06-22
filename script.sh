@@ -9,29 +9,42 @@ function startMongo {
 }
 
 
-function startevaluationServer {
+function startEvaluationServer {
     (npx community-solid-server -c ./evaluation/config.json -f ./evaluation/data) >/dev/null 2>&1 
+}
+
+function startDataDourceDahcc1P_100kTopology {
+    export NODE_OPTIONS="--max-old-space-size=8000" 
+    cleanDocker
+    startMongo &
+    node initialize_linked_list_ldes.mjs -b 100000 -s'dahcc-1-participant'
+    startEvaluationServer &
+    cd ./LDES-in-SOLID-Semantic-Observations-Replay/engine  
+    npm i  
+    npm start
+    cd ./../..
+
 }
 
 function startDataDourceLocationLdes_1_446Topology {
     cleanDocker
     startMongo &
-    node initialize_ldes.mjs -p 1 -l 446 -s 'location-LDES'
-    startevaluationServer &
+    node initialize_b_tree_ldes.mjs -p 1 -l 446 -s 'location-LDES'
+    startEvaluationServer &
 }
 
 function startDataDourceLocationLdes_20_10Topology {
     cleanDocker
     startMongo &
-    node initialize_ldes.mjs -p 20 -l 10 -s 'location-LDES'
-    startevaluationServer &
+    node initialize_b_tree_ldes.mjs -p 20 -l 10 -s 'location-LDES'
+    startEvaluationServer &
 }
 
 function startDataDourceLocationLdes_5_5Topology {
     cleanDocker
     startMongo &
-    node initialize_ldes.mjs -p 5 -l 5 -s 'location-LDES'
-    startevaluationServer &
+    node initialize_b_tree_ldes.mjs -p 5 -l 5 -s 'location-LDES'
+    startEvaluationServer &
 }
 
 function startDataSourceLocationDataDump {
@@ -66,6 +79,7 @@ function createSPARQLLTQTEnpoint {
 }
 
 function runevaluation {
+    unset NODE_OPTIONS
     if [ $1 = 1 ] ; then 
         sleep 5 && node evaluation.mjs -d
     else 

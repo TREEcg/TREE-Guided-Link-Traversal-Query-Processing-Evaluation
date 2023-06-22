@@ -12,10 +12,9 @@ const program = new Command();
 const supportedSource = new Map(Object.entries(configDataFile));
 const configPath = './evaluation/source_config/data_source_info.json';
 
-
 program
     .name('ldes-time-series-initializer')
-    .description('CLI program to initialize an LDES time serie for evaluation of link traversal query processing SPARQL query engine')
+    .description('CLI program to initialize an LDES time serie in the topology of a BTREE for evaluation of link traversal query processing SPARQL query engine')
     .version('0.0.0')
 
     .requiredOption('-p, --page-size <number>', 'The number of members per leaf nodes.', 20)
