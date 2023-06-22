@@ -1,6 +1,6 @@
 {
     "location-LDES": {
-        "path": "./benchmark/data/location-LDES/data.ttl",
+        "path": "./evaluation/data/location-LDES/data.ttl",
         "date_first_element": "2022-08-07T08:08:21Z",
         "name": "location-LDES",
         "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
@@ -20,14 +20,8 @@
             "?s sosa:resultTime ?t. ?s sosa:hasResult ?result. ?result wgs:latitude ?latitude. ?result wgs:longitude ?longitude. ?result wgs:elevation \"8.4\"^^<http://www.w3.org/2001/XMLSchema#double> ."
         ]
     },
-    "ship-LDES": {
-        "path": "./benchmark/data/ship-LDES.ttl",
-        "date_first_element": "2021-08-18T14:05:18.000Z",
-        "name": "ship-LDES",
-        "ldesIdentifier": "http: //www.example.com/ldes"
-    },
     "dahcc-1-participant": {
-        "path": "./benchmark/data/dahcc_1_participant/data.ttl",
+        "path": "./evaluation/data/dahcc_1_participant/data.ttl",
         "name": "dahcc-1-participant",
         "filters": [
             "false",

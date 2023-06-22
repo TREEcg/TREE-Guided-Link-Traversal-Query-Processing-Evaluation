@@ -6,16 +6,16 @@ import fs from 'fs';
 // https://github.com/SolidLabResearch/LDES-in-SOLID-Semantic-Observations-Replay
 // https://dahcc.idlab.ugent.be/dataset.html
 
-const configDataFilePath = 'benchmark/data/config.json';
+const configDataFilePath = 'evaluation/data/config.json';
 const configDataFile = JSON.parse(fs.readFileSync(configDataFilePath).toString());
 const program = new Command();
 const supportedSource = new Map(Object.entries(configDataFile));
-const configPath = './benchmark/source_config/data_source_info.json';
+const configPath = './evaluation/source_config/data_source_info.json';
 
 
 program
     .name('ldes-time-series-initializer')
-    .description('CLI program to initialize an LDES time serie for benchmarking of link traversal query processing SPARQL query engine')
+    .description('CLI program to initialize an LDES time serie for evaluation of link traversal query processing SPARQL query engine')
     .version('0.0.0')
 
     .requiredOption('-p, --page-size <number>', 'The number of members per leaf nodes.', 20)

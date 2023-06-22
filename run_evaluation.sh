@@ -37,6 +37,7 @@ while [ "$1" != "" ]; do
         ;;
     --download-dataset)
         downloadDahcc1ParticipantDataset
+        ;;
     -h | --help)
         usage
         ;;
@@ -53,13 +54,13 @@ case $data_source in
         liberateLDESHostingPort
         liberateDataDumpPort
         startDataSourceDahcc1PDataDump &
-        benchmarkFollowDataDump $demo
+        evaluationFollowDataDump $demo
         ;;
     location-LDES)
         liberateLDESHostingPort
         liberateDataDumpPort
         startDataSourceLocationDataDump &
-        benchmarkFollowDataDump $demo
+        evaluationFollowDataDump $demo
         ;;
     location-LDES-1-446)
         liberateLDESHostingPort
@@ -84,15 +85,15 @@ case $data_source in
 esac
 
 if [ $follow_tree_solver_config = 1 ]; then
-    benchmarkFollowTree $demo
+    evaluationFollowTree $demo
 fi
 
 if [ $follow_tree_config = 1 ] ; then
-    benchmarkFollowTreeSolver $demo
+    evaluationFollowTreeSolver $demo
 fi
 
 if [ $follow_all_config = 1 ]; then
-    benchmarkFollowAll $demo
+    evaluationFollowAll $demo
 fi
 
 liberateLDESHostingPort

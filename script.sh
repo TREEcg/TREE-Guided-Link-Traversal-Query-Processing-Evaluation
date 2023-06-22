@@ -5,41 +5,41 @@ function cleanDocker {
 }
 
 function startMongo {
-    docker run -d -p 27017:27017 --name mongo-comunica-filter-benchmark mongo:latest
+    docker run -d -p 27017:27017 --name mongo-comunica-filter-evaluation mongo:latest
 }
 
 
-function startBenchmarkServer {
-    (npx community-solid-server -c ./benchmark/config.json -f ./benchmark/data) >/dev/null 2>&1 
+function startevaluationServer {
+    (npx community-solid-server -c ./evaluation/config.json -f ./evaluation/data) >/dev/null 2>&1 
 }
 
 function startDataDourceLocationLdes_1_446Topology {
     cleanDocker
     startMongo &
     node initialize_ldes.mjs -p 1 -l 446 -s 'location-LDES'
-    startBenchmarkServer &
+    startevaluationServer &
 }
 
 function startDataDourceLocationLdes_20_10Topology {
     cleanDocker
     startMongo &
     node initialize_ldes.mjs -p 20 -l 10 -s 'location-LDES'
-    startBenchmarkServer &
+    startevaluationServer &
 }
 
 function startDataDourceLocationLdes_5_5Topology {
     cleanDocker
     startMongo &
     node initialize_ldes.mjs -p 5 -l 5 -s 'location-LDES'
-    startBenchmarkServer &
+    startevaluationServer &
 }
 
 function startDataSourceLocationDataDump {
-    node data_dump_config_generation.mjs -s "location-LDES" && (npx http-server ./benchmark/data/location-LDES -p 8080) >/dev/null 2>&1 
+    node data_dump_config_generation.mjs -s "location-LDES" && (npx http-server ./evaluation/data/location-LDES -p 8080) >/dev/null 2>&1 
 }
 
 function startDataSourceDahcc1PDataDump {
-    node data_dump_config_generation.mjs -s "dahcc-1-participant" && npx http-server benchmark/data/dahcc_1_participant -p 8080 >/dev/null 2>&1
+    node data_dump_config_generation.mjs -s "dahcc-1-participant" && npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null 2>&1
 }
 
 function liberateSPARQLEndpointPort {
@@ -55,7 +55,7 @@ function liberateDataDumpPort {
 }
 
 function createNewOutputFile {
-    rm ./benchmark/output -f && touch ./benchmark/output
+    rm ./evaluation/output -f && touch ./evaluation/output
 }
 function createSPARQLEnpoint {
         export NODE_OPTIONS="--max-old-space-size=8000"  
@@ -65,62 +65,62 @@ function createSPARQLLTQTEnpoint {
     node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $1 -p 5000 -i -l info -w 3 --freshWorker --lenient
 }
 
-function runBenchmark {
+function runevaluation {
     if [ $1 = 1 ] ; then 
-        sleep 5 && node benchmark.mjs -d
+        sleep 5 && node evaluation.mjs -d
     else 
-        sleep 5 && node benchmark.mjs 
+        sleep 5 && node evaluation.mjs 
     fi
 }
 
-function protoBenchmark {
+function protoEvaluation {
     sleep 10
     liberateSPARQLEndpointPort
     createNewOutputFile
     if [[ $2 = 0 ]]; then
         echo link traversal 
-        (createSPARQLLTQTEnpoint $1 &> ./benchmark/output) &
+        (createSPARQLLTQTEnpoint $1 &> ./evaluation/output) &
     else
         echo single endpoint
-        (createSPARQLEnpoint $1 &> ./benchmark/output) &
+        (createSPARQLEnpoint $1 &> ./evaluation/output) &
     fi
-    runBenchmark $3
+    runevaluation $3
     liberateSPARQLEndpointPort 
 }
 
-function benchmarkFollowTree {
-    export COMUNICA_CONFIG=./benchmark/config_comunica_follow_tree.json
+function evaluationFollowTree {
+    export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:3000/ldes/test
-    protoBenchmark $DATASOURCE_PATH 0 $1
+    protoEvaluation $DATASOURCE_PATH 0 $1
 }
 
-function benchmarkFollowTreeSolver {
-    export COMUNICA_CONFIG=./benchmark/config_comunica_follow_tree_solver.json
+function evaluationFollowTreeSolver {
+    export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:3000/ldes/test
-    protoBenchmark $DATASOURCE_PATH 0 $1
+    protoEvaluation $DATASOURCE_PATH 0 $1
 }
 
-function benchmarkFollowAll {
-    export COMUNICA_CONFIG=./benchmark/config_comunica_follow_all.json
+function evaluationFollowAll {
+    export COMUNICA_CONFIG=./evaluation/config_comunica_follow_all.json
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:3000/ldes/test
-    protoBenchmark $DATASOURCE_PATH 0 $1
+    protoEvaluation $DATASOURCE_PATH 0 $1
 }
 
-function benchmarkFollowDataDump {
+function evaluationFollowDataDump {
     unset COMUNICA_CONFIG
     export COMUNICA_TIMEOUT=6000
     DATASOURCE_PATH=http://localhost:8080/data.ttl
-    protoBenchmark $DATASOURCE_PATH $1
+    protoEvaluation $DATASOURCE_PATH $1
     unset NODE_OPTIONS
 }
 
 function downloadDahcc1ParticipantDataset { 
-    curl https://dahcc.idlab.ugent.be/data/data_kg/dataset_participant31.nt.gz > ./benchmark/data/dahcc_1_participant/archive.nt.gz
-    gzip -d -c ./benchmark/data/dahcc_1_participant/archive.nt.gz > ./benchmark/data/dahcc_1_participant/data.ttl
-    rm ./benchmark/data/dahcc_1_participant/archive.nt.gz
+    curl https://dahcc.idlab.ugent.be/data/data_kg/dataset_participant31.nt.gz > ./evaluation/data/dahcc_1_participant/archive.nt.gz
+    gzip -d -c ./evaluation/data/dahcc_1_participant/archive.nt.gz > ./evaluation/data/dahcc_1_participant/data.ttl
+    rm ./evaluation/data/dahcc_1_participant/archive.nt.gz
 }
 
 function usage {

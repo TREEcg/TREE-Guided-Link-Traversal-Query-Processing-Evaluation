@@ -9,8 +9,8 @@ import * as http from 'node:http';
 
 const program = new Command();
 program
-    .name('benchmark')
-    .description('CLI program to run a TREE benchmark')
+    .name('evaluation')
+    .description('CLI program to run a TREE evaluation')
     .version('0.0.0')
 
     .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 20)
@@ -28,11 +28,11 @@ if (demoMode) {
 }
 
 const rootNode = "http://localhost:5000/sparql";
-const benchmark_folder = './benchmark';
+const evaluation_folder = './evaluation';
 const config = process.env.COMUNICA_CONFIG || 'config_comunica_data_dump';
-const sparqlEndpointOutputFile = `${benchmark_folder}/output`;
-const sparqlEndpointOutputHistoryFile = `${benchmark_folder}/output_history`;
-const dataSourceInfoPath = `${benchmark_folder}/source_config/data_source_info.json`
+const sparqlEndpointOutputFile = `${evaluation_folder}/output`;
+const sparqlEndpointOutputHistoryFile = `${evaluation_folder}/output_history`;
+const dataSourceInfoPath = `${evaluation_folder}/source_config/data_source_info.json`
 const dataSourceInfo = JSON.parse(fs.readFileSync(dataSourceInfoPath));
 const flatTopology = (topology) => {
     let resp = '';
@@ -42,7 +42,7 @@ const flatTopology = (topology) => {
     return resp.substring(0, resp.length - 1);
 }
 
-const directory = `${benchmark_folder}/results/${dataSourceInfo.name}-${flatTopology(dataSourceInfo.topology)}`
+const directory = `${evaluation_folder}/results/${dataSourceInfo.name}-${flatTopology(dataSourceInfo.topology)}`
 const resultFile = `${directory}/${path.basename(config, '.json')}.json`;
 
 if (!fs.existsSync(directory) && !demoMode) {
