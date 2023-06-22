@@ -76,7 +76,6 @@ case $data_source in
         liberateDataDumpPort
         startDataDourceLocationLdes_5_5Topology &
         ;;
-
     *)
         echo not a supported dataset
         usage
