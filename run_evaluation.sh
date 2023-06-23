@@ -2,9 +2,13 @@
 
 . ./script.sh --source-only
 
+touch ./evaluation/server_log
+: > ./evaluation/server_log
+
 follow_all_config=0
 follow_tree_config=0
 follow_tree_solver_config=0
+server=0
 
 data_source=''
 
@@ -38,6 +42,9 @@ while [ "$1" != "" ]; do
     --download-dataset)
         downloadDahcc1ParticipantDataset
         ;;
+    --server)
+        server=1
+        ;;
     -h | --help)
         usage
         ;;
@@ -53,34 +60,64 @@ case $data_source in
     dahcc-1-participant)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataSourceDahcc1PDataDump &
+        if [ $server = 0 ]; then
+            startDataSourceDahcc1PDataDump &
+        else
+            startDataSourceDahcc1PDataDump
+            exit 0
+        fi
         evaluationFollowDataDump $demo
         ;;
     location-LDES)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataSourceLocationDataDump &
+        if [ $server = 0 ]; then
+            startDataSourceLocationDataDump &
+        else
+            startDataSourceLocationDataDump
+            exit 0
+        fi
         evaluationFollowDataDump $demo
         ;;
     location-LDES-1-446)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataDourceLocationLdes_1_446Topology &
+        if [ $server = 0 ]; then
+            startDataDourceLocationLdes_1_446Topology &
+        else
+            startDataDourceLocationLdes_1_446Topology
+            exit 0
+        fi
         ;;
     location-LDES-20-10)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataDourceLocationLdes_20_10Topology 
+        if [ $server = 0 ]; then
+            startDataDourceLocationLdes_20_10Topology 
+        else
+            startDataDourceLocationLdes_1_446Topology
+            exit 0
+        fi
         ;;
     location-LDES-5-5)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataDourceLocationLdes_5_5Topology &
+        if [ $server = 0 ]; then
+            startDataDourceLocationLdes_5_5Topology &
+        else
+            startDataDourceLocationLdes_5_5Topology
+            exit 0
+        fi
         ;;
     dahcc-1-participant-100k)
         liberateLDESHostingPort
         liberateDataDumpPort
-        startDataDourceDahcc1P_100kTopology 
+        if [ $server = 0 ]; then
+            startDataDourceDahcc1P_100kTopology 
+        else
+            startDataDourceDahcc1P_100kTopology
+            exit 0
+        fi
         ;;
     *)
         echo not a supported dataset

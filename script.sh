@@ -10,7 +10,7 @@ function startMongo {
 
 
 function startEvaluationServer {
-    (npx community-solid-server -c ./evaluation/config.json -f ./evaluation/data) >/dev/null 2>&1 
+    (npx community-solid-server -c ./evaluation/config.json -f ./evaluation/data) &> ./evaluation/server_log
 }
 
 function startDataDourceDahcc1P_100kTopology {
@@ -30,29 +30,29 @@ function startDataDourceLocationLdes_1_446Topology {
     cleanDocker
     startMongo &
     node initialize_b_tree_ldes.mjs -p 1 -l 446 -s 'location-LDES'
-    startEvaluationServer &
+    startEvaluationServer 
 }
 
 function startDataDourceLocationLdes_20_10Topology {
     cleanDocker
     startMongo &
     node --max-old-space-size=8000 initialize_b_tree_ldes.mjs -p 20 -l 10 -s 'location-LDES'
-    startEvaluationServer &
+    startEvaluationServer 
 }
 
 function startDataDourceLocationLdes_5_5Topology {
     cleanDocker
     startMongo &
     node initialize_b_tree_ldes.mjs -p 5 -l 5 -s 'location-LDES'
-    startEvaluationServer &
+    startEvaluationServer 
 }
 
 function startDataSourceLocationDataDump {
-    node data_dump_config_generation.mjs -s "location-LDES" && (npx http-server ./evaluation/data/location-LDES -p 8080) >/dev/null 2>&1 
+    node data_dump_config_generation.mjs -s "location-LDES" && (npx http-server ./evaluation/data/location-LDES -p 8080) &> ./evaluation/server_log 
 }
 
 function startDataSourceDahcc1PDataDump {
-    node data_dump_config_generation.mjs -s "dahcc-1-participant" && npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null 2>&1
+    node data_dump_config_generation.mjs -s "dahcc-1-participant" && npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log
 }
 
 function liberateSPARQLEndpointPort {
