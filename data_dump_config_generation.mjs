@@ -2,7 +2,7 @@ import { Command } from 'commander';
 import fs from 'fs';
 
 const program = new Command();
-const configDataFilePath = 'benchmark/data/config.json';
+const configDataFilePath = './evaluation/data/config.json';
 const configDataFile = JSON.parse(fs.readFileSync(configDataFilePath).toString());
 
 const supportedSource = new Map(Object.entries(configDataFile));
@@ -13,7 +13,7 @@ supportedSource.get('location-LDES')['topology'] = {
 supportedSource.get('dahcc-1-participant')['topology'] = {
     'n_member': 1_041_465
 };
-const configPath = './benchmark/source_config/data_source_info.json';
+const configPath = './evaluation/source_config/data_source_info.json';
 
 program
     .name('generate-config-file-data-dump')
