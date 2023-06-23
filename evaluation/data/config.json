@@ -3,7 +3,6 @@
         "path": "./evaluation/data/location-LDES/data.ttl",
         "date_first_element": "2022-08-07T08:08:21Z",
         "name": "location-LDES",
-        "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
         "timestampPath": "http://www.w3.org/ns/sosa/resultTime",
         "filters": [
             "?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime",
@@ -25,7 +24,6 @@
         "path": "./evaluation/data/dahcc_1_participant/data.ttl",
         "date_first_element": "2022-01-03T19:54:49.452000",
         "name": "dahcc-1-participant",
-        "ldesIdentifier": "http://localhost:3000/lil/#EventStream",
         "timestampPath": "https://saref.etsi.org/core/hasTimestamp",
         "filters": [
             "false",

@@ -109,6 +109,16 @@ case $data_source in
             exit 0
         fi
         ;;
+    location-LDES-10)
+        liberateLDESHostingPort
+        liberateDataDumpPort
+        if [ $server = 0 ]; then
+            startDataDourceLocationLdes_10Topology &
+        else
+            startDataDourceLocationLdes_10Topology
+            exit 0
+        fi
+        ;;
     dahcc-1-participant-100k)
         liberateLDESHostingPort
         liberateDataDumpPort
@@ -116,6 +126,16 @@ case $data_source in
             startDataDourceDahcc1P_100kTopology 
         else
             startDataDourceDahcc1P_100kTopology
+            exit 0
+        fi
+        ;;
+    dahcc-1-participant-LDES-100000)
+        liberateLDESHostingPort
+        liberateDataDumpPort
+        if [ $server = 0 ]; then
+            startDataSourceDahcc1PLdes_100000Topology &
+        else
+            startDataSourceDahcc1PLdes_100000Topology
             exit 0
         fi
         ;;
