@@ -1,4 +1,5 @@
 output
 output_history
+server_log
 source_config/*
 !source_config/.gitkeep
