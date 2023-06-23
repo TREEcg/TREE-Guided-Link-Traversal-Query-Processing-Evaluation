@@ -45,7 +45,6 @@ async function initialized_ldes() {
     // load some members
     const ldesIdentifier = dataSource.ldesIdentifier;
     const mongoDBURL = "mongodb://localhost:27017";
-    console.log(dataSource);
     const store = await storeFromFile(dataSource.path);
     const members = extractMembers(store, ldesIdentifier);
     console.log(`---${members.length} loaded---`);
