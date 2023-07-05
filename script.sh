@@ -141,6 +141,11 @@ function downloadDahcc1ParticipantDataset {
     rm ./evaluation/data/dahcc_1_participant/archive.nt.gz
 }
 
+function installTreeDataDumpInjestor {
+    cd ./TREE-datadump-injestor && cargo build --release
+    cd ..
+}
+
 function usage {
     cat usage
 }

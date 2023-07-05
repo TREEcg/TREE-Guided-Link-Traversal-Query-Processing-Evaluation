@@ -39,9 +39,6 @@ while [ "$1" != "" ]; do
     --demo)
         demo=1
         ;;
-    --download-dataset)
-        downloadDahcc1ParticipantDataset
-        ;;
     --server)
         server=1
         ;;
@@ -53,10 +50,18 @@ while [ "$1" != "" ]; do
         exit 1
         ;;
     esac
-    shift # remove the current value for `$1` and use the next
+    shift
 done
 
 case $data_source in
+    install-injestor)
+        installTreeDataDumpInjestor
+        exit 0
+        ;;
+    download-dataset)
+        downloadDahcc1ParticipantDataset
+        exit 0
+        ;;
     dahcc-1-participant)
         liberateLDESHostingPort
         liberateDataDumpPort
