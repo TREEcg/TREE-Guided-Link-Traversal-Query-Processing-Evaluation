@@ -1,73 +1,43 @@
 #!/bin/sh
 
-function cleanDocker {
-    (docker stop $(docker ps -a -q) && docker container prune -f) || true
-}
-
-function startMongo {
-    docker run -d -p 27017:27017 --name mongo-comunica-filter-evaluation mongo:latest
-}
-
-
-function startEvaluationServer {
-    (npx community-solid-server -c ./evaluation/config.json -f ./evaluation/data) &> ./evaluation/server_log
-}
-
-
-function startDataDourceLocationLdes_10Topology {
-    cleanDocker
-    startMongo &
-    node initialize_ldes.mjs -p 10 -s 'location-LDES' 'linked-list'
-    startEvaluationServer 
-}
-
-
-function startDataDourceLocationLdes_1_446Topology {
-    cleanDocker
-    startMongo &
-    node initialize_ldes.mjs -p 1 -l 446 -s 'location-LDES'
-    startEvaluationServer 
-}
-
-function startDataDourceLocationLdes_20_10Topology {
-    cleanDocker
-    startMongo &
-    node --max-old-space-size=8000 initialize_ldes.mjs -p 20 -l 10 -s 'location-LDES'
-    startEvaluationServer 
-}
-
-function startDataDourceLocationLdes_5_5Topology {
-    cleanDocker
-    startMongo &
-    node initialize_ldes.mjs -p 5 -l 5 -s 'location-LDES'
-    startEvaluationServer 
-}
-
-function startDataSourceDahcc1PLdes_100000Topology {
-    export NODE_OPTIONS="--max-old-space-size=8000" 
-    cleanDocker
-    startMongo &
-    node initialize_ldes.mjs -p 100000 -s 'dahcc-1-participant' '1-ary-tree'
-    startEvaluationServer 
-}
-
-function startDataSourceLocationDataDump {
-    node data_dump_config_generation.mjs -s "location-LDES" && (npx http-server ./evaluation/data/location-LDES -p 8080) &> ./evaluation/server_log 
-}
-
 function startDataSourceDahcc1PDataDump {
-    node data_dump_config_generation.mjs -s "dahcc-1-participant" && npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log
+    touch ./evaluation/server_log
+    : > ./evaluation/server_log
+    node data_dump_config_generation.mjs -s "dahcc-1-participant" 
+    npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log
 }
+
+function startDataSourceDahcc1PLDEServer {
+    touch ./evaluation/server_log
+    : > ./evaluation/server_log
+    npx http-server ./evaluation/data/dahcc_1_participant_ldes -p 8080 >/dev/null &> ./evaluation/server_log
+}
+
+
+function startLDESOneAry100FragmentDataSourceDahcc1P {
+    export n=100
+    export f=oneAryTree
+    mkdir -p ./evaluation/data/dahcc_1_participant_ldes
+    node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
+    ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
+    if [ $1 = 1 ] ; then 
+        touch ./evaluation/sparql_comunica_log
+    : > ./evaluation/sparql_comunica_log
+        startDataSourceDahcc1PLDEServer &
+        export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
+        export COMUNICA_TIMEOUT=60
+        DATASOURCE_PATH=http://localhost:8080/0.ttl
+        createSPARQLLTQTEnpoint $DATASOURCE_PATH &> ./evaluation/sparql_comunica_log
+    else 
+        startDataSourceDahcc1PLDEServer &
+    fi
+ }
 
 function liberateSPARQLEndpointPort {
     (fuser -k 5000/tcp || true)
 }
 
-function liberateLDESHostingPort {
-    (fuser -k 3000/tcp || true)
-}
-
-function liberateDataDumpPort {
+function liberateDataHostingPort {
     (fuser -k 8080/tcp || true)
 }
 
@@ -75,11 +45,12 @@ function createNewOutputFile {
     rm ./evaluation/output -f && touch ./evaluation/output
 }
 function createSPARQLEnpoint {
-        export NODE_OPTIONS="--max-old-space-size=8000"  
-        comunica-sparql-http http://localhost:8080/data.ttl -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient
+    export NODE_OPTIONS="--max-old-space-size=8000"
+    comunica-sparql-http http://localhost:8080/data.ttl -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient
+    unset NODE_OPTIONS
 }
 function createSPARQLLTQTEnpoint {
-    node ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $1 -p 5000 -i -l info -w 3 --freshWorker --lenient
+    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $1 -p 5000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
 }
 
 function runevaluation {
@@ -109,30 +80,29 @@ function protoEvaluation {
 function evaluationFollowTree {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
     export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:3000/ldes/test
+    DATASOURCE_PATH=http://localhost:8080/0.ttl
     protoEvaluation $DATASOURCE_PATH 0 $1
 }
 
 function evaluationFollowTreeSolver {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
     export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:3000/ldes/test
+    DATASOURCE_PATH=http://localhost:8080/0.ttl
     protoEvaluation $DATASOURCE_PATH 0 $1
 }
 
 function evaluationFollowAll {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_all.json
     export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:3000/ldes/test
+    DATASOURCE_PATH=http://localhost:8080/0.ttl
     protoEvaluation $DATASOURCE_PATH 0 $1
 }
 
 function evaluationFollowDataDump {
     unset COMUNICA_CONFIG
-    export COMUNICA_TIMEOUT=6000
+    export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:8080/data.ttl
-    protoEvaluation $DATASOURCE_PATH $1
-    unset NODE_OPTIONS
+    protoEvaluation $DATASOURCE_PATH 1 $1
 }
 
 function downloadDahcc1ParticipantDataset { 

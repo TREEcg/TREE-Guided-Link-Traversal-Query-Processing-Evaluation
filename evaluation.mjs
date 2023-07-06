@@ -77,7 +77,7 @@ if (!maxExecutionTime) {
     throw new Error('The env variable COMUNICA_TIMEOUT is not defined');
 }
 
-const waitingTimeSec = 1;
+const waitingTimeSec = 2;
 
 const filterExpressions = demoMode ? dataSourceInfo.filters.slice(0, 2) : dataSourceInfo.filters;
 const triplePatternsQuery = demoMode ? dataSourceInfo.triple_patterns_query.slice(0, 2) : dataSourceInfo.triple_patterns_query;

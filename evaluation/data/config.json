@@ -1,30 +1,7 @@
 {
-    "location-LDES": {
-        "path": "./evaluation/data/location-LDES/data.ttl",
-        "date_first_element": "2022-08-07T08:08:21Z",
-        "name": "location-LDES",
-        "timestampPath": "http://www.w3.org/ns/sosa/resultTime",
-        "filters": [
-            "?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime",
-            "(?t>=\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime && ?t<\"2022-08-07T08:38:50.000Z\"^^xsd:dateTime) || (?t<\"2022-08-07T08:30:45.000Z\"^^xsd:dateTime &&  ?t>=\"2022-08-07T08:22:16.000Z\"^^xsd:dateTime)",
-            "?t<\"2022-08-07T08:28:02.000Z\"^^xsd:dateTime",
-            "?t=\"2022-08-07T08:18:31Z\"^^xsd:dateTime",
-            "false",
-            "true",
-            "?t>=\"2022-08-07T08:22:36Z\"^^xsd:dateTime &&  ?latitude>=50.971924"
-        ],
-        "triple_patterns_query": [
-            "?s sosa:resultTime ?t.",
-            "?s sosa:resultTime ?t. ?s sosa:madeBySensor ?sensor.",
-            "?s sosa:resultTime ?t. ?s sosa:hasResult ?result. ?result wgs:latitude ?latitude.",
-            "?s sosa:resultTime ?t. ?s sosa:hasResult ?result. ?result wgs:latitude ?latitude. ?result wgs:longitude ?longitude. ?result wgs:elevation \"8.4\"^^<http://www.w3.org/2001/XMLSchema#double> ."
-        ]
-    },
     "dahcc-1-participant": {
         "path": "./evaluation/data/dahcc_1_participant/data.ttl",
-        "date_first_element": "2022-01-03T19:54:49.452000",
         "name": "dahcc-1-participant",
-        "timestampPath": "https://saref.etsi.org/core/hasTimestamp",
         "filters": [
             "false",
             "true"

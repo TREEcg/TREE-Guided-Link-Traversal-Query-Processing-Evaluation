@@ -8,9 +8,6 @@
   "dependencies": {
     "@comunica/actor-extract-links-tree": "file:./comunica-feature-link-traversal/packages/actor-extract-links-extract-tree",
     "@comunica/query-sparql-link-traversal": "file:./comunica-feature-link-traversal/engines/query-sparql-link-traversal",
-    "@treecg/ldes-snapshot": "^0.1.1",
-    "@treecg/ldes-timeseries": "^0.0.4",
-    "commander": "^10.0.0",
-    "ldes-solid-server": "^0.0.8"
+    "commander": "^10.0.0"
   }
 }

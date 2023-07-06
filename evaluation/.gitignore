@@ -3,3 +3,4 @@ output_history
 server_log
 source_config/*
 !source_config/.gitkeep
+sparql_comunica_log
