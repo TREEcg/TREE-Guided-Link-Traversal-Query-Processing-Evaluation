@@ -4,13 +4,38 @@
         "name": "dahcc-1-participant",
         "filters": [
             "false",
-            "true"
+            "true",
+            "?t=\"2022-01-03T10:57:54.000000\"^^xsd:dateTime",
+            "?t=\"2022-01-03T19:54:22.469000\"^^xsd:dateTime",
+            "?t>=\"2022-01-03T15:17:01.000000\"^^xsd:dateTime && ?t<\"2022-01-03T16:27:57.980000\"^^xsd:dateTime",
+            "(?t>=\"2022-01-03T10:28:37.558000\"^^xsd:dateTime && ?t<=\"2022-01-03T11:04:35.897000\"^^xsd:dateTime) || (?t>\"2022-01-03T17:21:08.000000\" && ?t<=\"2022-01-03T18:11:34.000000\")",
+            "(?t>=\"2022-01-03T15:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T20:00:00.000000\"^^xsd:dateTime) && !(?t>=\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T18:00:00.000000\"^^xsd:dateTime)",
+            "?t>\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && (?result<= \"1022\"^^xs:float || ?result=\"true\"^^xsd::boolean)"
         ],
         "triple_patterns_query": [
-            "?s etsi:hasTimestamp ?t.",
-            "?s etsi:hasTimestamp ?t. ?s etsi:relatesToProperty ?property.",
-            "?s etsi:hasTimestamp ?t. ?s etsi:hasValue ?result.",
-            "?s etsi:hasTimestamp ?t. ?s etsi:hasValue ?result. ?s etsi:measurementMadeBy <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/mqtt.steinelHPD2.kitchen>"
+            [
+                "?s etsi:hasTimestamp ?t.",
+                "?s etsi:hasValue ?result."
+            ],
+            [
+                "?s etsi:hasTimestamp ?t.",
+                "?s etsi:hasValue ?result.",
+                "?s etsi:measurementMadeBy <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/mqtt.steinelHPD2.kitchen>"
+            ],
+            [
+                "?s etsi:hasTimestamp ?t.",
+                "?s etsi:hasValue ?result.",
+                "?s etsi:measurementMadeBy ?sensor",
+                "?sensor <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/isLocatedNear> <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/frontdoor>"
+            ],
+            [
+                "?s etsi:hasTimestamp ?t.",
+                "?s etsi:hasValue ?result.",
+                "?s etsi:measurementMadeBy ?sensor",
+                "?sensor <https://dahcc.idlab.ugent.be/Ontology/Sensors/analyseStateOf> ?stateOf",
+                "?sensor <https://saref.etsi.org/core/measuresProperty> <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/energy.consumption>"
+
+            ]
         ]
     }
 }

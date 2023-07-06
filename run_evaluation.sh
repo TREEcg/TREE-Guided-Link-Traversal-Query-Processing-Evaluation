@@ -2,14 +2,11 @@
 
 . ./script.sh --source-only
 
-follow_all_config=0
 follow_tree_config=0
 follow_tree_solver_config=0
 server=0
 
 data_source=''
-
-demo=0
 
 if [ $# -eq 0 ]; then
     usage 
@@ -21,10 +18,6 @@ shift
 
 while [ "$1" != "" ]; do
     case $1 in
-    --all)
-        follow_all_config=1
-        echo going to test with the follow all criteria
-        ;;
     --tree)
         follow_tree_config=1
         echo going to test with the follow TREE criteria
@@ -32,9 +25,6 @@ while [ "$1" != "" ]; do
     --tree-solver)
         follow_tree_solver_config=1
         echo going to test with the follow TREE-Guided criteria
-        ;;
-    --demo)
-        demo=1
         ;;
     --server)
         server=1
@@ -51,6 +41,11 @@ while [ "$1" != "" ]; do
 done
 
 case $data_source in
+    install-comunica)
+        cd comunica-feature-link-traversal
+        yarn install
+        cd ..
+        ;;
     install-injestor)
         installTreeDataDumpInjestor
         exit 0
@@ -87,15 +82,15 @@ case $data_source in
 esac
 
 if [ $follow_tree_solver_config = 1 ]; then
-    evaluationFollowTree $demo
+    evaluationFollowTree
 fi
 
 if [ $follow_tree_config = 1 ] ; then
-    evaluationFollowTreeSolver $demo
+    evaluationFollowTreeSolver
 fi
 
 if [ $follow_all_config = 1 ]; then
-    evaluationFollowAll $demo
+    evaluationFollowAll
 fi
 
 liberateSPARQLEndpointPort

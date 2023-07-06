@@ -10,6 +10,7 @@ function startDataSourceDahcc1PDataDump {
 function startDataSourceDahcc1PLDEServer {
     touch ./evaluation/server_log
     : > ./evaluation/server_log
+    cp ./evaluation/data/dahcc_1_participant/matadata.xml evaluation/data/dahcc_1_participant_ldes/matadata.xml
     npx http-server ./evaluation/data/dahcc_1_participant_ldes -p 8080 >/dev/null &> ./evaluation/server_log
 }
 
@@ -46,20 +47,17 @@ function createNewOutputFile {
 }
 function createSPARQLEnpoint {
     export NODE_OPTIONS="--max-old-space-size=8000"
-    comunica-sparql-http http://localhost:8080/data.ttl -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 3 --freshWorker --lenient
+    comunica-sparql-http http://localhost:8080/data.ttl http://localhost:8080/matadata.xml -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 1 --freshWorker --lenient
     unset NODE_OPTIONS
 }
 function createSPARQLLTQTEnpoint {
-    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $1 -p 5000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
+    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $1 http://localhost:8080/matadata.xml -p 5000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
 }
 
-function runevaluation {
+function runEvaluation {
     unset NODE_OPTIONS
-    if [ $1 = 1 ] ; then 
-        sleep 5 && node evaluation.mjs -d
-    else 
-        sleep 5 && node evaluation.mjs 
-    fi
+    sparql-benchmark-runner -e http://localhost:5000/sparql -q ./evaluation/query --output $OUTPUT_FILE --replication 5 --warmup 1
+
 }
 
 function protoEvaluation {
@@ -73,7 +71,7 @@ function protoEvaluation {
         echo single endpoint
         (createSPARQLEnpoint $1 &> ./evaluation/output) &
     fi
-    runevaluation $3
+    runEvaluation
     liberateSPARQLEndpointPort 
 }
 
@@ -81,28 +79,21 @@ function evaluationFollowTree {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:8080/0.ttl
-    protoEvaluation $DATASOURCE_PATH 0 $1
+    protoEvaluation $DATASOURCE_PATH 0
 }
 
 function evaluationFollowTreeSolver {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:8080/0.ttl
-    protoEvaluation $DATASOURCE_PATH 0 $1
-}
-
-function evaluationFollowAll {
-    export COMUNICA_CONFIG=./evaluation/config_comunica_follow_all.json
-    export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:8080/0.ttl
-    protoEvaluation $DATASOURCE_PATH 0 $1
+    protoEvaluation $DATASOURCE_PATH 0
 }
 
 function evaluationFollowDataDump {
     unset COMUNICA_CONFIG
     export COMUNICA_TIMEOUT=60
     DATASOURCE_PATH=http://localhost:8080/data.ttl
-    protoEvaluation $DATASOURCE_PATH 1 $1
+    protoEvaluation $DATASOURCE_PATH 1
 }
 
 function downloadDahcc1ParticipantDataset { 
