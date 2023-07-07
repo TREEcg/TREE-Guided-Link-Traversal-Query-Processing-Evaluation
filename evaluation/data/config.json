@@ -5,12 +5,19 @@
         "filters": [
             "false",
             "true",
+
             "?t=\"2022-01-03T10:57:54.000000\"^^xsd:dateTime",
             "?t=\"2022-01-03T19:54:22.469000\"^^xsd:dateTime",
-            "?t>=\"2022-01-03T15:17:01.000000\"^^xsd:dateTime && ?t<\"2022-01-03T16:27:57.980000\"^^xsd:dateTime",
-            "(?t>=\"2022-01-03T10:28:37.558000\"^^xsd:dateTime && ?t<=\"2022-01-03T11:04:35.897000\"^^xsd:dateTime) || (?t>\"2022-01-03T17:21:08.000000\" && ?t<=\"2022-01-03T18:11:34.000000\")",
-            "(?t>=\"2022-01-03T15:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T20:00:00.000000\"^^xsd:dateTime) && !(?t>=\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T18:00:00.000000\"^^xsd:dateTime)",
-            "?t>\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && (?result<= \"1022\"^^xs:float || ?result=\"true\"^^xsd::boolean)"
+
+            "?t>=\"2022-01-03T15:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T16:30:00.000000\"^^xsd:dateTime",
+            "(?t>=\"2022-01-03T10:00:00.000000\"^^xsd:dateTime && ?t<=\"2022-01-03T11:10:00.00000\"^^xsd:dateTime) || (?t>\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && ?t<=\"2022-01-03T18:05:00.000000\"^^xsd:dateTime)",
+            "(?t>=\"2022-01-03T15:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T20:00:00.000000\"^^xsd:dateTime) && !(?t>=\"2022-01-03T15:10:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T16:40:00.000000\"^^xsd:dateTime)",
+            "?t>\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && (?result<= \"1022\"^^xsd:float || ?result=\"true\"^^xsd::boolean)",
+
+            "?t>=\"2022-01-03T15:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T15:30:00.000000\"^^xsd:dateTime",
+            "(?t>=\"2022-01-03T10:00:00.000000\"^^xsd:dateTime && ?t<=\"2022-01-03T10:10:00.00000\"^^xsd:dateTime) || (?t>\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && ?t<=\"2022-01-03T17:05:00.000000\"^^xsd:dateTime)",
+            "(?t>=\"2022-01-03T15:00:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T20:00:00.000000\"^^xsd:dateTime) && !(?t>=\"2022-01-03T15:10:00.000000\"^^xsd:dateTime && ?t<\"2022-01-03T15:40:00.000000\"^^xsd:dateTime)",
+            "?t>\"2022-01-03T17:00:00.000000\"^^xsd:dateTime && (?result<= \"1022\"^^xsd:float || ?result=\"true\"^^xsd::boolean)"
         ],
         "triple_patterns_query": [
             [
@@ -25,14 +32,14 @@
             [
                 "?s etsi:hasTimestamp ?t.",
                 "?s etsi:hasValue ?result.",
-                "?s etsi:measurementMadeBy ?sensor",
+                "?s etsi:measurementMadeBy ?sensor.",
                 "?sensor <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/isLocatedNear> <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/frontdoor>"
             ],
             [
                 "?s etsi:hasTimestamp ?t.",
                 "?s etsi:hasValue ?result.",
-                "?s etsi:measurementMadeBy ?sensor",
-                "?sensor <https://dahcc.idlab.ugent.be/Ontology/Sensors/analyseStateOf> ?stateOf",
+                "?s etsi:measurementMadeBy ?sensor.",
+                "?sensor <https://dahcc.idlab.ugent.be/Ontology/Sensors/analyseStateOf> ?stateOf.",
                 "?sensor <https://saref.etsi.org/core/measuresProperty> <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/energy.consumption>"
 
             ]

@@ -57,22 +57,16 @@ case $data_source in
     dahcc-1-participant)
         liberateDataHostingPort
         if [ $server = 0 ]; then
-            startDataSourceDahcc1PDataDump &
+            startDataSourceDahcc1PDataDump $server
         else
-            startDataSourceDahcc1PDataDump
+            startDataSourceDahcc1PDataDump $server
+            evaluationFollowDataDump $demo
             exit 0
         fi
-        evaluationFollowDataDump $demo
         ;;
     dahcc-1-participant-one-ary-tree-100)
         liberateDataHostingPort
-        if [ $server = 0 ]; then
-            startLDESOneAry100FragmentDataSourceDahcc1P 0
-        else
-            startLDESOneAry100FragmentDataSourceDahcc1P 1
-            liberateSPARQLEndpointPort
-            exit 0
-        fi
+        startLDESOneAry100FragmentDataSourceDahcc1P $server
         ;;
     *)
         echo not a supported dataset

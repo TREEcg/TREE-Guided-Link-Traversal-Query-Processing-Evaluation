@@ -1,17 +1,35 @@
 #!/bin/sh
 
+export COMUNICA_TIMEOUT=120
+export DATASOURCE_LDES=http://localhost:8080/0.ttl
+export DATASOURCE_DATADUMP=http://localhost:8080/data.ttl
+export DATASOURCE_METADATA=http://localhost:8080/metadata.ttl
+
+
 function startDataSourceDahcc1PDataDump {
     touch ./evaluation/server_log
     : > ./evaluation/server_log
-    node data_dump_config_generation.mjs -s "dahcc-1-participant" 
-    npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log
+    npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log &
+    if [ $1 = 1 ] ; then 
+        touch ./evaluation/sparql_comunica_log
+        : > ./evaluation/sparql_comunica_log
+        createSPARQLEnpoint &> ./evaluation/sparql_comunica_log
+        exit 0
+    fi
 }
 
 function startDataSourceDahcc1PLDEServer {
     touch ./evaluation/server_log
     : > ./evaluation/server_log
-    cp ./evaluation/data/dahcc_1_participant/matadata.xml evaluation/data/dahcc_1_participant_ldes/matadata.xml
-    npx http-server ./evaluation/data/dahcc_1_participant_ldes -p 8080 >/dev/null &> ./evaluation/server_log
+    cp ./evaluation/data/dahcc_1_participant/metadata.ttl ./evaluation/data/dahcc_1_participant_ldes/metadata.ttl
+    npx http-server ./evaluation/data/dahcc_1_participant_ldes -p 8080 >/dev/null &> ./evaluation/server_log &
+    if [ $1 = 1 ] ; then 
+        touch ./evaluation/sparql_comunica_log
+        : > ./evaluation/sparql_comunica_log
+        export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
+        createSPARQLLTQTEnpoint &> ./evaluation/sparql_comunica_log
+        exit 0
+    fi
 }
 
 
@@ -21,17 +39,8 @@ function startLDESOneAry100FragmentDataSourceDahcc1P {
     mkdir -p ./evaluation/data/dahcc_1_participant_ldes
     node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
     ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
-    if [ $1 = 1 ] ; then 
-        touch ./evaluation/sparql_comunica_log
-    : > ./evaluation/sparql_comunica_log
-        startDataSourceDahcc1PLDEServer &
-        export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-        export COMUNICA_TIMEOUT=60
-        DATASOURCE_PATH=http://localhost:8080/0.ttl
-        createSPARQLLTQTEnpoint $DATASOURCE_PATH &> ./evaluation/sparql_comunica_log
-    else 
-        startDataSourceDahcc1PLDEServer &
-    fi
+    startDataSourceDahcc1PLDEServer $1
+    
  }
 
 function liberateSPARQLEndpointPort {
@@ -43,15 +52,16 @@ function liberateDataHostingPort {
 }
 
 function createNewOutputFile {
-    rm ./evaluation/output -f && touch ./evaluation/output
+    touch ./evaluation/output
+    : > ./evaluation/output
 }
 function createSPARQLEnpoint {
     export NODE_OPTIONS="--max-old-space-size=8000"
-    comunica-sparql-http http://localhost:8080/data.ttl http://localhost:8080/matadata.xml -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 1 --freshWorker --lenient
+    comunica-sparql-http $DATASOURCE_DATADUMP $DATASOURCE_METADATA -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 1 --freshWorker --lenient
     unset NODE_OPTIONS
 }
 function createSPARQLLTQTEnpoint {
-    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $1 http://localhost:8080/matadata.xml -p 5000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
+    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $DATASOURCE_LDES $DATASOURCE_METADATA -p 5000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
 }
 
 function runEvaluation {
@@ -66,10 +76,10 @@ function protoEvaluation {
     createNewOutputFile
     if [[ $2 = 0 ]]; then
         echo link traversal 
-        (createSPARQLLTQTEnpoint $1 &> ./evaluation/output) &
+        (createSPARQLLTQTEnpoint &> ./evaluation/output) &
     else
         echo single endpoint
-        (createSPARQLEnpoint $1 &> ./evaluation/output) &
+        (createSPARQLEnpoint &> ./evaluation/output) &
     fi
     runEvaluation
     liberateSPARQLEndpointPort 
@@ -77,23 +87,17 @@ function protoEvaluation {
 
 function evaluationFollowTree {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
-    export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:8080/0.ttl
-    protoEvaluation $DATASOURCE_PATH 0
+    protoEvaluation 0
 }
 
 function evaluationFollowTreeSolver {
     export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-    export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:8080/0.ttl
-    protoEvaluation $DATASOURCE_PATH 0
+    protoEvaluation  0
 }
 
 function evaluationFollowDataDump {
     unset COMUNICA_CONFIG
-    export COMUNICA_TIMEOUT=60
-    DATASOURCE_PATH=http://localhost:8080/data.ttl
-    protoEvaluation $DATASOURCE_PATH 1
+    protoEvaluation 1
 }
 
 function downloadDahcc1ParticipantDataset { 

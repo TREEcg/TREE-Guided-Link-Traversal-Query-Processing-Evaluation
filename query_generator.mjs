@@ -39,7 +39,7 @@ SELECT * WHERE {
 `
 };
 let string_query_file = "";
-let i = 0;
+let i = 1;
 for (const tp of dataSource.triple_patterns_query) {
     let triple_patterns = "";
     for (const triple_pattern of tp) {
