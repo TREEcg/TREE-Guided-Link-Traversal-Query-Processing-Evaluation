@@ -56,11 +56,11 @@ case $data_source in
         ;;
     dahcc-1-participant)
         liberateDataHostingPort
-        if [ $server = 0 ]; then
+        if [ $server = 1 ]; then
             startDataSourceDahcc1PDataDump $server
         else
             startDataSourceDahcc1PDataDump $server
-            evaluationFollowDataDump $demo
+            evaluationFollowDataDump
             exit 0
         fi
         ;;
@@ -83,9 +83,6 @@ if [ $follow_tree_config = 1 ] ; then
     evaluationFollowTreeSolver
 fi
 
-if [ $follow_all_config = 1 ]; then
-    evaluationFollowAll
-fi
 
 liberateSPARQLEndpointPort
 liberateDataHostingPort
