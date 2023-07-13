@@ -15,6 +15,7 @@ function startDataSourceDahcc1PDataDump {
     npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log &
     if [ $1 = 1 ] ; then 
         touch ./evaluation/sparql_comunica_log
+        unset COMUNICA_CONFIG
         : > ./evaluation/sparql_comunica_log
         createSPARQLEnpoint &> ./evaluation/sparql_comunica_log
         exit 0
@@ -29,7 +30,6 @@ function startDataSourceDahcc1PLDEServer {
     if [ $1 = 1 ] ; then 
         touch ./evaluation/sparql_comunica_log
         : > ./evaluation/sparql_comunica_log
-        export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
         createSPARQLLTQTEnpoint &> ./evaluation/sparql_comunica_log
         exit 0
     fi
@@ -45,6 +45,28 @@ function startLDESOneAry100FragmentDataSourceDahcc1P {
     ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
     startDataSourceDahcc1PLDEServer $1
     
+ }
+
+ function startLDESOneAry1000FragmentDataSourceDahcc1P {
+    export n=1000
+    export f=oneAryTree
+    FRAGMENTATION_NAME="${f}${n}"
+    mkdir -p ./evaluation/data/dahcc_1_participant_ldes
+    node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
+    ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
+    startDataSourceDahcc1PLDEServer $1
+
+ }
+
+  function startLDESLinkedList1000FragmentDataSourceDahcc1P {
+    export n=1000
+    export f=linkedList
+    FRAGMENTATION_NAME="${f}${n}"
+    mkdir -p ./evaluation/data/dahcc_1_participant_ldes
+    node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
+    ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
+    startDataSourceDahcc1PLDEServer $1
+
  }
 
 function liberateSPARQLEndpointPort {
