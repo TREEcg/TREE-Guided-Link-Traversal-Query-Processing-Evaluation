@@ -83,18 +83,20 @@ function createNewOutputFile {
 }
 
 function createSPARQLEnpoint {
-    export NODE_OPTIONS="--max-old-space-size=8000"
-    comunica-sparql-http $DATASOURCE_DATADUMP $DATASOURCE_METADATA -p 5000 -t $COMUNICA_TIMEOUT -i -l info -w 1 --freshWorker --lenient
-    unset NODE_OPTIONS
+    #export NODE_OPTIONS="--max-old-space-size=3000"
+    #comunica-sparql-http $DATASOURCE_DATADUMP $DATASOURCE_METADATA -p 3000 -t $COMUNICA_TIMEOUT -i -w 3
+    #unset NODE_OPTIONS
+
+    node --max-old-space-size=8000 comunica/engines/query-sparql/bin/http.js $DATASOURCE_DATADUMP $DATASOURCE_METADATA -p 3000 -t $COMUNICA_TIMEOUT -i -w 1
 }
 
 function createSPARQLLTQTEnpoint {
-    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $DATASOURCE_LDES $DATASOURCE_METADATA -p 5000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
+    node --max-old-space-size=8000 ./comunica-feature-link-traversal/engines/query-sparql-link-traversal/bin/http.js $DATASOURCE_LDES $DATASOURCE_METADATA -p 3000 -i -l info -w 1 -t $COMUNICA_TIMEOUT --freshWorker --lenient
 }
 
 function runEvaluation {
     unset NODE_OPTIONS
-    sparql-benchmark-runner -e http://localhost:5000/sparql -q ./evaluation/query --output "./results/${FRAGMENTATION_NAME}_${CONFIG_NAME}" --replication 1 --warmup 1
+    npx sparql-benchmark-runner -e http://localhost:3000/sparql -q ./evaluation/query --output "./results/${FRAGMENTATION_NAME}_${CONFIG_NAME}" --replication 1 --warmup 1
 
 }
 

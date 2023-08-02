@@ -6,3 +6,4 @@ source_config/*
 sparql_comunica_log
 query/*
 !query/.gitkeep
+!query/A0.txt
