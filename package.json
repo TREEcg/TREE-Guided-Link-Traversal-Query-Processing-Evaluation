@@ -8,6 +8,7 @@
   "dependencies": {
     "@comunica/actor-extract-links-tree": "file:./comunica-feature-link-traversal/packages/actor-extract-links-extract-tree",
     "@comunica/config-query-sparql-link-traversal": "file:./comunica-feature-link-traversal/engines/config-query-sparql-link-traversal",
+    "@comunica/query-sparql": "^2.8.1",
     "@comunica/query-sparql-link-traversal": "file:./comunica-feature-link-traversal/engines/query-sparql-link-traversal",
     "commander": "^10.0.0",
     "http-server": "^14.1.1",
