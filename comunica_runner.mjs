@@ -32,7 +32,7 @@ if (mode === "TREE") {
 } else if (mode === "DATA-DUMP") {
     engine = new QueryEngine();
 } else {
-    throw new Error(`the mode ${mode} is not supported`);
+    throw new Error(`the mode "${mode}" is not supported`);
 }
 
 const regexpSummary = /(TOTAL),([+-]?[0-9]*[.]?[0-9]+),([0-9]+)/;
