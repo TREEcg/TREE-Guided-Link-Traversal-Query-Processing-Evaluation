@@ -1,4 +1,4 @@
-import { QueryEngineFactory as QueryEngineFactoryLTQT} from "@comunica/query-sparql-link-traversal";
+import { QueryEngineFactory as QueryEngineFactoryLTQT } from "@comunica/query-sparql-link-traversal";
 import { QueryEngine } from "@comunica/query-sparql-link-traversal";
 
 import fs from 'fs';
@@ -67,8 +67,9 @@ data.on('data', (res) => {
         let tag = (currentRes).match(regexpSummary);
         timeExec = Number(tag[2]);
         nRequests = Number(tag[3])
+    } else if (currentRes.indexOf("HTTP requests") === -1) {
+        nResults += 1;
     }
-    nResults += 1;
 });
 
 data.on('error', (_) => {
