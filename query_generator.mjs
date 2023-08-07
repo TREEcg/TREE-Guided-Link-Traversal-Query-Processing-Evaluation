@@ -26,8 +26,7 @@ if (dataSource === undefined) {
 }
 
 const createQuery = (filterExpression, triple_paterns) => {
-    return `
-PREFIX sosa: <http://www.w3.org/ns/sosa/> 
+    return `PREFIX sosa: <http://www.w3.org/ns/sosa/> 
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
 PREFIX wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX etsi: <https://saref.etsi.org/core/>
@@ -39,22 +38,24 @@ SELECT * WHERE {
 `
 };
 let string_query_file = "";
-let i = 1;
+
+let letter_number = 65;
 for (const tp of dataSource.triple_patterns_query) {
+    let i = 1;
     let triple_patterns = "";
     for (const triple_pattern of tp) {
         triple_patterns += `${triple_pattern}\n`
     }
-
+    const letter = String.fromCharCode(letter_number);
     for (const filter of dataSource.filters) {
-        string_query_file += `${createQuery(filter, triple_patterns)}\n`
+        string_query_file += `${createQuery(filter, triple_patterns)}\n`;
+        const query_file = path.join(query_folder_path, `${letter}${i}.txt`);
+        fs.writeFileSync(query_file, string_query_file);
+        string_query_file = "";
+        i += 1;
+        console.log(`query file generated at ${query_file}`)
     }
-
-    const query_file = path.join(query_folder_path, `A${i}.txt`);
-    fs.writeFileSync(query_file, string_query_file);
-    string_query_file = "";
-    i+=1;
-    console.log(`query file generated at ${query_file}`)
+    letter_number += 1;
 }
 
 
