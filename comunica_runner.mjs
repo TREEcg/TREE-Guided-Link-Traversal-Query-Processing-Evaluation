@@ -11,9 +11,11 @@ program
     .version('0.0.0')
 
     .requiredOption('-f, --file-path <string>', 'File path of the query to be executed')
-    .option('-m, --mode <mode>', 'if true execute an LTQT query', 'TREE')
     .requiredOption('-r, --root-nodes <string...>', 'the first data sources to query')
+
+    .option('-m, --mode <mode>', 'The configuration of the engine', 'TREE')
     .option('-t, --timeout <number>', 'Timeout of the query in second', 120)
+    
     .parse(process.argv);
 
 const options = program.opts();
@@ -46,6 +48,11 @@ const returnedMessage = (nResults, timeExec, nRequest) => {
     return JSON.stringify(resp);
 };
 
+const timer = setTimeout(() => {
+    console.log(returnedMessage(nResults, timeout));
+    process.exit(1);
+}, timeout);
+
 const query = fs.readFileSync(queryFilePath).toString();
 
 const results = await engine.query(
@@ -66,24 +73,19 @@ data.on('data', (res) => {
     if (regexpSummary.test(currentRes)) {
         let tag = (currentRes).match(regexpSummary);
         timeExec = Number(tag[2]);
-        nRequests = Number(tag[3])
+        nRequests = Number(tag[3]);
     } else if (currentRes.indexOf("HTTP requests") === -1) {
         nResults += 1;
     }
 });
 
-data.on('error', (_) => {
-    console.log(returnedMessage(NaN, NaN, NaN));
-    process.exit(1);
+data.on('error', (error) => {
+    clearTimeout(timer);
+    throw new Error(error);
 });
 
 data.on('end', () => {
-
     console.log(returnedMessage(nResults, timeExec, nRequests));
-    process.exit(0)
+    clearTimeout(timer);
+    process.exit(0);
 });
-
-setTimeout(() => {
-    console.log(returnedMessage(nResults, timeout));
-    process.exit(1);
-}, timeout);
