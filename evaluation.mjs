@@ -54,8 +54,6 @@ if (!demoMode) {
     console.log(`will save at ${resultFile}`);
 }
 
-console.log(`evaluation in mode ${mode}`);
-
 const queryFolder = './evaluation/query';
 let queryFiles = [];
 
