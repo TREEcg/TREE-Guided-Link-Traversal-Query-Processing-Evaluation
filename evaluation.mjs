@@ -44,7 +44,7 @@ if (mode === "TREE" || mode === "TREE-GUIDED") {
 const evaluation_folder = './evaluation';
 
 const directory = `${evaluation_folder}/results/${topology}`
-const resultFile = `${directory}/${mode}.json`;
+const resultFile = `${directory}/${mode}_${memorySize}_memory.json`;
 
 if (!fs.existsSync(directory) && !demoMode) {
     fs.mkdirSync(directory);
