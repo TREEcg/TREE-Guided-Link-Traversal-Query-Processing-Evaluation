@@ -28,6 +28,7 @@ while [ "$1" != "" ]; do
         ;;
     --server)
         server=1
+        echo going to spawn an enpoint and server
         ;;
     -h | --help)
         usage
@@ -113,11 +114,11 @@ case $data_source in
 esac
 
 if [ $follow_tree_solver_config = 1 ]; then
-    evaluationFollowTree
+    evaluationFollowTreeSolver
 fi
 
 if [ $follow_tree_config = 1 ] ; then
-    evaluationFollowTreeSolver
+    evaluationFollowTree
 fi
 
 

@@ -54,6 +54,8 @@ if (!demoMode) {
     console.log(`will save at ${resultFile}`);
 }
 
+console.log(`evaluation in mode ${mode}`);
+
 const queryFolder = './evaluation/query';
 let queryFiles = [];
 
@@ -89,12 +91,15 @@ async function main() {
                     nRepetition,
                     i,
                     sumaryResults[queryFile]);
+                await save_result(sumaryResults);
+
             } catch (e) {
                 console.error(`-------------- Failed with error ${e} --------------`);
                 sumaryResults[queryFile].push(failedTest);
+
+                await save_result(sumaryResults);
                 break;
             }
-
         }
     }
     console.log(`--------------THE END--------------`);
@@ -103,26 +108,24 @@ async function main() {
     return;
 }
 
-async function save_result(sumaryResults, printResult = false) {
-    const stringSumaryResult = JSON.stringify(sumaryResults, null, 4);
+async function save_result(results, printResult = false) {
+    const stringSumaryResult = JSON.stringify(results, null, 4);
     if (printResult) {
         console.log(`Sumary:\n${stringSumaryResult}`);
     }
     if (!demoMode) {
-        fs.writeFile(resultFile, stringSumaryResult, () => {
+        fs.writeFileSync(resultFile, stringSumaryResult, () => {
             console.log(`result file available at ${resultFile}`)
         });
     }
 }
 
-async function executeQuery(queryFile, nRepetition, i, sumaryResults) {
+async function executeQuery(queryFile, nRepetition, i, results) {
     console.log(`--------------repetition: ${i + 1} out of ${nRepetition}--------------`);
     const command = createCommand(memorySize, queryFile, rootNodes, timeout, mode);
     const stdout = execSync(command, { timeout: (timeout + 1) * 1000 });
     const resp = JSON.parse(stdout);
-    sumaryResults.push(resp);
-
-    save_result(sumaryResults);
+    results.push(resp);
 }
 
 await main();

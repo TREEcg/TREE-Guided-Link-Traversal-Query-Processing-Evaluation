@@ -1,12 +1,15 @@
 #!/bin/sh
 
-export COMUNICA_TIMEOUT=120
+export COMUNICA_TIMEOUT=60
 export DATASOURCE_LDES=http://localhost:8080/0.ttl
 export DATASOURCE_DATADUMP=http://localhost:8080/data.ttl
 export DATASOURCE_METADATA=http://localhost:8080/metadata.ttl
 
 export FRAGMENTATION_NAME="undefined_"
 export CONFIG_NAME="undefined"
+export NUMBER_REPETITION=20
+export MODE="undefined"
+export SPACE_SIZE=9000
 
 function startDataSourceDahcc1PDataDump {
     touch ./evaluation/server_log
@@ -41,7 +44,6 @@ function startLDESOneAry100FragmentDataSourceDahcc1P {
     export f=oneAryTree
     FRAGMENTATION_NAME="${f}${n}"
     mkdir -p ./evaluation/data/dahcc_1_participant_ldes
-    node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
     ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
     startDataSourceDahcc1PLDEServer $1
     
@@ -52,7 +54,6 @@ function startLDESOneAry100FragmentDataSourceDahcc1P {
     export f=oneAryTree
     FRAGMENTATION_NAME="${f}${n}"
     mkdir -p ./evaluation/data/dahcc_1_participant_ldes
-    node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
     ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
     startDataSourceDahcc1PLDEServer $1
 
@@ -63,7 +64,6 @@ function startLDESOneAry100FragmentDataSourceDahcc1P {
     export f=linkedList
     FRAGMENTATION_NAME="${f}${n}"
     mkdir -p ./evaluation/data/dahcc_1_participant_ldes
-    node ./ldes_config_generator.mjs -s dahcc-1-participant -n $n
     ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
     startDataSourceDahcc1PLDEServer $1
 
@@ -95,39 +95,28 @@ function createSPARQLLTQTEnpoint {
 }
 
 function runEvaluation {
-    unset NODE_OPTIONS
-    npx sparql-benchmark-runner -e http://localhost:3000/sparql -q ./evaluation/query --output "./results/${FRAGMENTATION_NAME}_${CONFIG_NAME}" --replication 1 --warmup 1
-
+    node ./evaluation.mjs -n $NUMBER_REPETITION -t $FRAGMENTATION_NAME -m $MODE -s $SPACE_SIZE --timeout $COMUNICA_TIMEOUT
 }
 
 function protoEvaluation {
-    liberateSPARQLEndpointPort
     createNewOutputFile
-    if [[ $2 = 0 ]]; then
-        echo link traversal 
-        (createSPARQLLTQTEnpoint &> ./evaluation/output) &
-    else
-        echo single endpoint
-        (createSPARQLEnpoint &> ./evaluation/output) &
-    fi
-    sleep 10
-    runEvaluation
-    liberateSPARQLEndpointPort 
+    echo $MODE
+    runEvaluation 
 }
 
 function evaluationFollowTree {
-    export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
-    protoEvaluation 0
+    export MODE="TREE"
+    protoEvaluation
 }
 
 function evaluationFollowTreeSolver {
-    export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-    protoEvaluation  0
+    export MODE="TREE-GUIDED"
+    protoEvaluation 
 }
 
 function evaluationFollowDataDump {
-    unset COMUNICA_CONFIG
-    protoEvaluation 1
+    export MODE="DATA-DUMP"
+    protoEvaluation
 }
 
 function downloadDahcc1ParticipantDataset { 
