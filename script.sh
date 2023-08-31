@@ -14,7 +14,7 @@ export SPACE_SIZE=9000
 function startDataSourceDahcc1PDataDump {
     touch ./evaluation/server_log
     : > ./evaluation/server_log
-    FRAGMENTATION_NAME="datadump"
+    FRAGMENTATION_NAME="datadump_1_participant_dahcc"
     npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log &
     if [ $1 = 1 ] ; then 
         touch ./evaluation/sparql_comunica_log
@@ -114,7 +114,7 @@ function evaluationFollowTreeSolver {
     protoEvaluation 
 }
 
-function evaluationFollowDataDump {
+function evaluationDataDump {
     export MODE="DATA-DUMP"
     protoEvaluation
 }

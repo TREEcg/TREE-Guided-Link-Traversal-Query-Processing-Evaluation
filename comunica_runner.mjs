@@ -1,5 +1,5 @@
 import { QueryEngineFactory as QueryEngineFactoryLTQT } from "@comunica/query-sparql-link-traversal";
-import { QueryEngine } from "@comunica/query-sparql-link-traversal";
+import { QueryEngine } from "@comunica/query-sparql-file";
 
 import fs from 'fs';
 import { Command } from 'commander';

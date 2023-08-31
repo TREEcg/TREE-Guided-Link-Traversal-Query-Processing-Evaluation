@@ -61,7 +61,7 @@ case $data_source in
             startDataSourceDahcc1PDataDump $server
         else
             startDataSourceDahcc1PDataDump $server
-            evaluationFollowDataDump
+            evaluationDataDump
             exit 0
         fi
         ;;
@@ -121,6 +121,9 @@ if [ $follow_tree_config = 1 ] ; then
     evaluationFollowTree
 fi
 
+if [ $datadump_config = 1 ] ; then
+    evaluationDataDump
+fi
 
 liberateSPARQLEndpointPort
 liberateDataHostingPort
