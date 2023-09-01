@@ -1,0 +1,3540 @@
+{
+    "./evaluation/query/A1.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 0.8346939999610186,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.1032429999904707,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.2447529999772087,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.1102420000825077,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.2300650000106543,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.0984620000235736,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.0961949999909848,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.7624930000165477,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.0089330000337213,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 6.962141999974847,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.1284369999775663,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.0986980000743642,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.1591350000817329,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 2.057022999972105,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.9963490000227466,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.200931999948807,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.0719719999469817,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.1149089999962598,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.1018550000153482,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.9514470000285655,
+            "nRequest": 2
+        }
+    ],
+    "./evaluation/query/A11.txt": [
+        {
+            "nResults": 235350,
+            "timeExec": 35386.45150899992,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 36156.698337000096,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 36834.38521999994,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 39701.98211999994,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 40099.062753999955,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 37168.68053200003,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 42739.79177499993,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 37365.228845000034,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 36507.10656099999,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 35170.27064800006,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 35052.97902700002,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 34854.86516499985,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 36880.71639800002,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 32143.320057000034,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 32974.040005000075,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 36262.80232999986,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 34597.497176999925,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 35141.3057289999,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 34239.98666199995,
+            "nRequest": 442
+        },
+        {
+            "nResults": 235350,
+            "timeExec": 33705.78896099981,
+            "nRequest": 442
+        }
+    ],
+    "./evaluation/query/A12.txt": [
+        {
+            "nResults": 96335,
+            "timeExec": 19902.975269000046,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20278.143606000114,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20043.340501999948,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19308.76289699995,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19425.499829000095,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19320.439585000044,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20318.50162899983,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19303.29166600015,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20338.525636999868,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20218.031335999956,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19686.59120699996,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20214.031015999848,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 23811.92967600003,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 24810.39774699998,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20113.168891000096,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20649.959448999958,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19462.960736999987,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19300.42731099995,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19989.114105999935,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19398.313019000227,
+            "nRequest": 296
+        }
+    ],
+    "./evaluation/query/A2.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/A3.txt": [
+        {
+            "nResults": 5,
+            "timeExec": 111.9318459997885,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 102.19871800020337,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 99.76232300000265,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 106.13392799999565,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 131.35391100030392,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 106.32388499984518,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 101.18525700038299,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 103.28605100000277,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 118.65691199991852,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 101.82567999977618,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 102.30869999993593,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 125.19540699990466,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 112.42229499993846,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 117.68755400041118,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 98.84873299999163,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 112.62305600009859,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 129.88761899992824,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 106.52276799967512,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 109.1394750000909,
+            "nRequest": 3
+        },
+        {
+            "nResults": 5,
+            "timeExec": 135.23349000001326,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/A4.txt": [
+        {
+            "nResults": 1,
+            "timeExec": 130.71299999998882,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 102.86473099980503,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 170.759829999879,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 125.09109500003979,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 170.1891140001826,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 109.18396700033918,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 110.85318500036374,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 107.60604099975899,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 120.61023900005966,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 117.44993000011891,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 119.70587900001556,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 109.37200899980962,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 133.2540650004521,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 131.14769900031388,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 124.6445210003294,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 104.45340400002897,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 106.21357499994338,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 120.56267499970272,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 109.54810700006783,
+            "nRequest": 3
+        },
+        {
+            "nResults": 1,
+            "timeExec": 115.81701399991289,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/A5.txt": [
+        {
+            "nResults": 88763,
+            "timeExec": 10371.692495000083,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10159.406165999826,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10054.833804999944,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10297.063949999865,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10131.16160399979,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10074.08227699995,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10251.221679000184,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10139.307694999967,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10240.654337999877,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 10355.69019200001,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8997.070718999952,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8981.888303000014,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8911.81848100014,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8905.08271300001,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 9121.492370999884,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8821.039181000087,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8848.381149000023,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8772.780832000077,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8840.566297000274,
+            "nRequest": 148
+        },
+        {
+            "nResults": 88763,
+            "timeExec": 8884.227301000152,
+            "nRequest": 148
+        }
+    ],
+    "./evaluation/query/A6.txt": [
+        {
+            "nResults": 124237,
+            "timeExec": 16497.90705100028,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16353.619700000156,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16539.488506000023,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16247.827718999702,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 17301.548815999646,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16768.2761479998,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 15963.035562000237,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16358.45057799993,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16113.91400700016,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 15977.89338100003,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 15868.551134000067,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 15987.56316700019,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 16182.473990000319,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13697.450261000078,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13596.482807999942,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13623.886415000074,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13654.855967000127,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13342.655977999792,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13510.205707000103,
+            "nRequest": 224
+        },
+        {
+            "nResults": 124237,
+            "timeExec": 13534.077378999908,
+            "nRequest": 224
+        }
+    ],
+    "./evaluation/query/A7.txt": [
+        {
+            "nResults": 178516,
+            "timeExec": 21169.223779000342,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21201.965173000004,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21108.423237000126,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 20917.897665000055,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21274.731340000406,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21121.631557999644,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21023.116159999743,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21063.678000000305,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 21613.77623699978,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 25135.84997300012,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 25060.32772400044,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 24946.771144999657,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 25326.12795400014,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 26015.82662399998,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 25427.49783599982,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 26607.448814999778,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 27893.990336999763,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 25960.425619000103,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 24865.715933999978,
+            "nRequest": 344
+        },
+        {
+            "nResults": 178516,
+            "timeExec": 23656.510309000034,
+            "nRequest": 344
+        }
+    ],
+    "./evaluation/query/A8.txt": [
+        {
+            "nResults": 96335,
+            "timeExec": 18281.847242999822,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 18437.213470000308,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20360.373640000354,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 22021.050629999954,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20408.106909000315,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 21019.977115000132,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20145.667964999564,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20938.847056999803,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20276.617902000435,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20546.141871000174,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20902.603287999984,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20100.158460000064,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20963.91704099998,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20414.719000999816,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 21140.013882,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20248.271191000007,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19854.526258999947,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 20251.524059000425,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19722.170956999995,
+            "nRequest": 296
+        },
+        {
+            "nResults": 96335,
+            "timeExec": 19430.191894999705,
+            "nRequest": 296
+        }
+    ],
+    "./evaluation/query/A9.txt": [
+        {
+            "nResults": 31618,
+            "timeExec": 3630.43166200025,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3584.960684000049,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3646.466781999916,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3728.6979100001045,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3710.48418399971,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3651.858806000091,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3674.2095829998143,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3667.877558999695,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3637.5661049997434,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3589.123883999884,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3612.408034999855,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3641.6196530000307,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3659.4232360003516,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3628.7612970001064,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3632.201693999581,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3653.321569000371,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3782.290424000006,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3703.977895000018,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3681.3455070001073,
+            "nRequest": 51
+        },
+        {
+            "nResults": 31618,
+            "timeExec": 3613.961467999965,
+            "nRequest": 51
+        }
+    ],
+    "./evaluation/query/B1.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 0.6841140002943575,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.8161909999325871,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.2349219997413456,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7914599999785423,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.721653999760747,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.0544680003076792,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7461580000817776,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7551819998770952,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.5567149999551475,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7547490000724792,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7804429996758699,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7245049998164177,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 1.6163139999844134,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7603930002078414,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.8409639997407794,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7483179997652769,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7256979998201132,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7191309998743236,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7812959998846054,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 0.7789779999293387,
+            "nRequest": 2
+        }
+    ],
+    "./evaluation/query/B11.txt": [
+        {
+            "nResults": 3103,
+            "timeExec": 23105.511335000396,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23408.86488700006,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23235.001180000138,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23332.315268000122,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23070.46762200026,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23559.450548999943,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23461.345525999554,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22850.4074860001,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22888.561967000365,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22735.299944999628,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22874.80429700017,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22740.21016599983,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22747.638052999973,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22491.168711000122,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23247.316624999978,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23149.927622000687,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22968.38194900006,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 22778.926729999483,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23019.806371999905,
+            "nRequest": 442
+        },
+        {
+            "nResults": 3103,
+            "timeExec": 23163.834353000857,
+            "nRequest": 442
+        }
+    ],
+    "./evaluation/query/B12.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 14265.008070000447,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14180.521824000403,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14491.955384000205,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14344.689673000015,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14378.001846999861,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14303.747844000347,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14364.734122000635,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14242.171624999493,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14245.36130299978,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14173.268769000657,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14665.524876999669,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14330.954352000728,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14568.66126700025,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14180.182545999996,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14352.787568999454,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14500.693890000694,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14439.489725000225,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14691.535078999586,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 13041.540581000037,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 13866.984880999662,
+            "nRequest": 296
+        }
+    ],
+    "./evaluation/query/B2.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/B3.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 79.39141699951142,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 94.30339100025594,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 85.8191090002656,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 80.25942200049758,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 79.91134999971837,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 77.37880100030452,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 82.58952299971133,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 79.16543900035322,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 80.6306959996,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 85.21207999996841,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 94.90823800023645,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 97.04115399997681,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 76.624292999506,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 95.11001799907535,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 81.4665190000087,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 88.13016699999571,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 80.06707599945366,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 82.5814930004999,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 79.47262999974191,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 88.6653319997713,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/B4.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 97.94383300002664,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 106.55226700007915,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 118.93140199966729,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 88.40586199983954,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 108.82149000000209,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 112.03419000003487,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 107.30903400015086,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 109.67067399993539,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 85.69424399919808,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 97.62560100015253,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 95.49916499946266,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 97.09864000044763,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 101.93590399995446,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 94.83335999958217,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 94.72333700023592,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 101.13838499970734,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 104.96440100017935,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 105.61915799975395,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 100.91526800021529,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 111.3401559991762,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/B5.txt": [
+        {
+            "nResults": 962,
+            "timeExec": 8528.547987999395,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7864.583469999954,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7902.9112869994715,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7844.8165579997,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7935.055045999587,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7861.978614999913,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7834.219059000723,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7824.884517999366,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7855.092852000147,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7916.0777340000495,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7739.365714999847,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7960.004408000037,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 8040.739440999925,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7758.847919000313,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7862.348050000146,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7887.208630000241,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7852.57639000006,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 8016.52921800036,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7830.731520999223,
+            "nRequest": 148
+        },
+        {
+            "nResults": 962,
+            "timeExec": 7748.174662999809,
+            "nRequest": 148
+        }
+    ],
+    "./evaluation/query/B6.txt": [
+        {
+            "nResults": 1594,
+            "timeExec": 11773.466760999523,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11611.976344000548,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11453.494277999736,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11473.477493000217,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11382.759100999683,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11742.98901099991,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11380.275577999651,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11610.804911999963,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11571.797117999755,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11585.554082999937,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11570.57282300014,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11387.056477999315,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11445.780311999843,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11826.684151999652,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11449.507683000527,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11477.038599999622,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11390.80525500048,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11349.042031999677,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11437.951656999998,
+            "nRequest": 224
+        },
+        {
+            "nResults": 1594,
+            "timeExec": 11529.646309999749,
+            "nRequest": 224
+        }
+    ],
+    "./evaluation/query/B7.txt": [
+        {
+            "nResults": 2458,
+            "timeExec": 17175.28780800011,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17753.90943999961,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 18020.884382000193,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17408.67833899986,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 16972.243222000077,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17205.647696000524,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17129.674828000367,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17510.249355999753,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17026.23358700052,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17260.758128999732,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17100.810394000262,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17202.942468999885,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17608.73553599976,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17116.424406000413,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17188.838417999446,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17130.127873999998,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17255.88426699955,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17145.112769000232,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17278.803115999326,
+            "nRequest": 344
+        },
+        {
+            "nResults": 2458,
+            "timeExec": 17471.208941999823,
+            "nRequest": 344
+        }
+    ],
+    "./evaluation/query/B8.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 14453.869252000004,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14237.146366000175,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14300.905079999939,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14399.930474000052,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14333.603889000602,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14002.595440000296,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14107.725132999942,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14090.789533999749,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14500.008634999394,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14310.379212999716,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14401.885166000575,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14111.084700999781,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14350.96749399975,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14146.349979000166,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 14116.80632500071,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 13592.734458999708,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 12376.741073000245,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 12207.349294999614,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 12247.597841000184,
+            "nRequest": 296
+        },
+        {
+            "nResults": 0,
+            "timeExec": 12703.94628899917,
+            "nRequest": 296
+        }
+    ],
+    "./evaluation/query/B9.txt": [
+        {
+            "nResults": 330,
+            "timeExec": 2419.808802000247,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2384.847428000532,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2417.7444529999048,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2421.6371339997277,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2392.169288000092,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2407.275744999759,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2413.525038000196,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2399.1071239998564,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2456.852411999367,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2462.202591000125,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2415.642586999573,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2487.185321999714,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2441.487193999812,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2397.999118999578,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2437.163435999304,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2441.4481060002,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2399.1721390001476,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2410.390208000317,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2425.3061640001833,
+            "nRequest": 51
+        },
+        {
+            "nResults": 330,
+            "timeExec": 2407.9771050000563,
+            "nRequest": 51
+        }
+    ],
+    "./evaluation/query/C1.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 5.013623999431729,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.042845000512898,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.1009259996935725,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 4.994682000018656,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 4.829455999657512,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 8.134484000504017,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.148168000392616,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 8.109691000543535,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 7.173981999978423,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.007563000544906,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 7.8244519997388124,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 4.943432999774814,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.004656000062823,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 4.957190999761224,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 7.519683999940753,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.062659000046551,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 4.891928999684751,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 9.35120700020343,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 5.042976000346243,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 4.884258999489248,
+            "nRequest": 2
+        }
+    ],
+    "./evaluation/query/C11.txt": [
+        {
+            "nResults": 914,
+            "timeExec": 27156.365875000134,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27226.039032000117,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27120.849413000047,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 28400.870710999705,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27308.137010999955,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27319.33775399998,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27785.40809200052,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27748.134482000023,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27662.438444999978,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27531.679281000048,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 28127.47317599971,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27451.47164000012,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27593.0190890003,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27328.33120100014,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27349.533059000038,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27270.404659000225,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27339.925389000215,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27221.1690750001,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27968.439933000132,
+            "nRequest": 442
+        },
+        {
+            "nResults": 914,
+            "timeExec": 27163.7530930005,
+            "nRequest": 442
+        }
+    ],
+    "./evaluation/query/C12.txt": [
+        {
+            "nResults": 82,
+            "timeExec": 16666.664898000658,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 17175.79946700018,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16664.21403099969,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16631.1549829999,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16612.77373799961,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16571.995062999427,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16679.816318999976,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 17045.75586500019,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16977.77808399964,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16604.187131999992,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16726.142327999696,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16631.343982999213,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 17410.943055000156,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16599.391138000414,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16771.376381000504,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 17022.124061999843,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16521.73223600071,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16675.64970800001,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 16872.762310999446,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 17394.771296000108,
+            "nRequest": 296
+        }
+    ],
+    "./evaluation/query/C2.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/C3.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 98.26274199970067,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 99.93551400024444,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 98.80254899989814,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 100.40736099984497,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 91.9680550005287,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 99.68467400036752,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 100.17536100000143,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 93.22803399991244,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 94.28737199958414,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 107.0941800000146,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 109.38993600010872,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 94.12411199975759,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 98.20847500022501,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 104.40134099964052,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 101.61466600000858,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 99.41531699988991,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 93.70024499949068,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 95.41107799950987,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 105.7418920006603,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 103.26987199950963,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/C4.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 110.23621500004083,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 103.63429099973291,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 101.37297100014985,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 105.6037170002237,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 97.61986299976707,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 102.85357700008899,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 109.56030900031328,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 97.21054900065064,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 116.5658049993217,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 105.62041600048542,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 119.21269199997187,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 101.50246599968523,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 99.73718999978155,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 100.78153099957854,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 106.01091499999166,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 104.81660900078714,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 105.01054000016302,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 100.5564329996705,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 105.17487000022084,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 99.19834300037473,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/C5.txt": [
+        {
+            "nResults": 326,
+            "timeExec": 9373.753171999939,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9389.30816799961,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9480.88050599955,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9328.478670999408,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9306.450511999428,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9462.858869999647,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9438.898397999816,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9394.603627000004,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9298.747320000082,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9427.543892000802,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9452.890691000037,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9424.999848000705,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9503.289622999728,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9341.64506599959,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9367.796238999814,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9464.383553000167,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9442.435892000794,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9461.131980000064,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9372.530652000569,
+            "nRequest": 148
+        },
+        {
+            "nResults": 326,
+            "timeExec": 9487.688797000796,
+            "nRequest": 148
+        }
+    ],
+    "./evaluation/query/C6.txt": [
+        {
+            "nResults": 833,
+            "timeExec": 14605.232729999349,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14668.076253999956,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14816.655357000418,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 15056.603161999956,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14842.235328000039,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14651.071345000528,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14694.958639000542,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14829.410409000702,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14716.32165100053,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14989.888352000155,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14851.11718900036,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14872.232334000058,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14709.835537999868,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14577.721002000384,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14875.66801500041,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14988.986445999704,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 15504.781845999882,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14743.833472000435,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14991.266340000555,
+            "nRequest": 224
+        },
+        {
+            "nResults": 833,
+            "timeExec": 14993.209045999683,
+            "nRequest": 224
+        }
+    ],
+    "./evaluation/query/C7.txt": [
+        {
+            "nResults": 699,
+            "timeExec": 20102.847473000176,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20011.803567999974,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20089.932436999865,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 19953.64999699965,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20001.120525000617,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20045.749374000356,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20594.309437999502,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20045.356337999925,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 19888.128926000558,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20048.823575999588,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 19977.19145200029,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20058.67342299968,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20063.7743180003,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20009.76580100134,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20104.78228600137,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20769.97953600064,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 22704.51998499967,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 22021.75288799964,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 20779.029261998832,
+            "nRequest": 344
+        },
+        {
+            "nResults": 699,
+            "timeExec": 21311.228067999706,
+            "nRequest": 344
+        }
+    ],
+    "./evaluation/query/C8.txt": [
+        {
+            "nResults": 82,
+            "timeExec": 23313.769508000463,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 21176.6761119999,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 21774.599880000576,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 22591.193997999653,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 22477.752167999744,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 21634.2291719988,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 20707.76107500121,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 20482.634188000113,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 19899.563420999795,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 20028.008235000074,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 19770.65220700018,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 19488.528407000005,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 19462.512760000303,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 19740.8456939999,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 20454.62459900044,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 21256.754766000435,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 20677.641451999545,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 18415.879749000072,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 18462.998672001064,
+            "nRequest": 296
+        },
+        {
+            "nResults": 82,
+            "timeExec": 18011.728426000103,
+            "nRequest": 296
+        }
+    ],
+    "./evaluation/query/C9.txt": [
+        {
+            "nResults": 111,
+            "timeExec": 3769.643821001053,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 5004.709455000237,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 4316.208064999431,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3702.319375999272,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3511.072681000456,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 4466.857986999676,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3789.013947000727,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3572.309733999893,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3606.2775200009346,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3720.6044459994882,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3565.9524029996246,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3572.1257509998977,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3959.8595549985766,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3989.2835910003632,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3686.4875509999692,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3537.6646079998463,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3657.208074999973,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3821.7838280014694,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3654.83652099967,
+            "nRequest": 51
+        },
+        {
+            "nResults": 111,
+            "timeExec": 3641.964084001258,
+            "nRequest": 51
+        }
+    ],
+    "./evaluation/query/D1.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 207.19144999980927,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 215.3531700000167,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 211.74620600044727,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 204.79353300109506,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 200.2234790008515,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 202.19118200056255,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 208.18741399981081,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 193.97448799945414,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 210.49351399950683,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 196.12064599990845,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 224.21095399931073,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 206.6354070007801,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 210.9490419998765,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 200.1704689990729,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 199.59115600027144,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 200.19995800033212,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 216.26329599879682,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 223.5064109992236,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 220.51556099951267,
+            "nRequest": 2
+        },
+        {
+            "nResults": 0,
+            "timeExec": 220.65626899898052,
+            "nRequest": 2
+        }
+    ],
+    "./evaluation/query/D11.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D12.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D2.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D3.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 852.5559650007635,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 834.8719239998609,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 842.0301120001823,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 885.1210369989276,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 803.6608719993383,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 890.9174349997193,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 848.9607389997691,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 895.1052139997482,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 832.3219879996032,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 854.1599090006202,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 880.822100000456,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 888.8829640001059,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 831.7463869992644,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 898.9999469984323,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 934.6771280001849,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 911.0843710005283,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 882.9478959999979,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 847.6541140004992,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 905.1990189999342,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 829.1528310012072,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/D4.txt": [
+        {
+            "nResults": 0,
+            "timeExec": 725.2041870001704,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 812.4911740012467,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 735.9415589999408,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 745.0725300014019,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 756.7554620001465,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 828.0336380004883,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 762.3869720008224,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 766.4748010002077,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 835.1378049999475,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 844.8425559997559,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 839.6699570007622,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 856.3460450004786,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 823.6521169990301,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 725.1256329994649,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 863.4897399991751,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 845.5674000009894,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 807.0367430001497,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 742.4468279983848,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 820.7554089985788,
+            "nRequest": 3
+        },
+        {
+            "nResults": 0,
+            "timeExec": 734.483825000003,
+            "nRequest": 3
+        }
+    ],
+    "./evaluation/query/D5.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D6.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D7.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D8.txt": [
+        {
+            "nResults": null,
+            "timeExec": null,
+            "nRequest": null
+        }
+    ],
+    "./evaluation/query/D9.txt": [
+        {
+            "nResults": 8166,
+            "timeExec": 32532.13376000151,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29925.971881000325,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28651.172604000196,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29026.84962699935,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28508.422771999612,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28640.33032000065,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29276.455966999754,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29595.023005999625,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29468.642187001184,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28807.851871000603,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28918.61044199951,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28832.36705700122,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29758.816225999966,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28681.60127000138,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28776.056935001165,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29351.41859799996,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 27761.13783100061,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 28752.79909100011,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29465.87180500105,
+            "nRequest": 51
+        },
+        {
+            "nResults": 8166,
+            "timeExec": 29138.81740500033,
+            "nRequest": 51
+        }
+    ]
+}

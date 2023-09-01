@@ -121,9 +121,6 @@ if [ $follow_tree_config = 1 ] ; then
     evaluationFollowTree
 fi
 
-if [ $datadump_config = 1 ] ; then
-    evaluationDataDump
-fi
 
 liberateSPARQLEndpointPort
 liberateDataHostingPort
