@@ -13,6 +13,7 @@ program
     .requiredOption('-n, --number-repetition <number>', 'The number of repetion for each test cases', 20)
     .requiredOption('-t, --topology <string>', 'The topology of the TREE document')
     .requiredOption('-m, --mode <mode>', 'The configuration of the engine', 'TREE')
+    .requiredOption('--dataset-name <string>','The name of the dataset')
 
     .option('-d, --demo-mode', "Don't record the results and do three repetition of two filter expression and triple pattern", false)
     .option('-s, --space-size <number>', 'The memory size for the SPARQL engine', 10_000)
@@ -27,6 +28,7 @@ const mode = options.mode;
 const topology = options.topology;
 const memorySize = options.spaceSize;
 const timeout = options.timeout;
+const datasetName = options.datasetName;
 
 if (demoMode) {
     console.log('DEMO MODE');
@@ -43,11 +45,11 @@ if (mode === "TREE" || mode === "TREE-GUIDED") {
 
 const evaluation_folder = './evaluation';
 
-const directory = `${evaluation_folder}/results/${topology}`
+const directory = `${evaluation_folder}/results/${datasetName}/${topology}`
 const resultFile = `${directory}/${mode}_${memorySize}_memory.json`;
 
 if (!fs.existsSync(directory) && !demoMode) {
-    fs.mkdirSync(directory);
+    fs.mkdirSync(directory, { recursive: true });
 }
 
 if (!demoMode) {

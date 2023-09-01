@@ -10,11 +10,13 @@ export CONFIG_NAME="undefined"
 export NUMBER_REPETITION=20
 export MODE="undefined"
 export SPACE_SIZE=9000
+export DATASET_NAME="undefined"
 
 function startDataSourceDahcc1PDataDump {
     touch ./evaluation/server_log
     : > ./evaluation/server_log
     FRAGMENTATION_NAME="datadump_1_participant_dahcc"
+    DATASET_NAME="Dahcc1P"
     npx http-server evaluation/data/dahcc_1_participant -p 8080 >/dev/null &> ./evaluation/server_log &
     if [ $1 = 1 ] ; then 
         touch ./evaluation/sparql_comunica_log
@@ -28,6 +30,7 @@ function startDataSourceDahcc1PDataDump {
 function startDataSourceDahcc1PLDEServer {
     touch ./evaluation/server_log
     : > ./evaluation/server_log
+    DATASET_NAME="Dahcc1P"
     cp ./evaluation/data/dahcc_1_participant/metadata.ttl ./evaluation/data/dahcc_1_participant_ldes/metadata.ttl
     npx http-server ./evaluation/data/dahcc_1_participant_ldes -p 8080 >/dev/null &> ./evaluation/server_log &
     if [ $1 = 1 ] ; then 
@@ -95,7 +98,7 @@ function createSPARQLLTQTEnpoint {
 }
 
 function runEvaluation {
-    node ./evaluation.mjs -n $NUMBER_REPETITION -t $FRAGMENTATION_NAME -m $MODE -s $SPACE_SIZE --timeout $COMUNICA_TIMEOUT
+    node ./evaluation.mjs -n $NUMBER_REPETITION -t $FRAGMENTATION_NAME -m $MODE -s $SPACE_SIZE --timeout $COMUNICA_TIMEOUT --dataset-name $DATASET_NAME
 }
 
 function protoEvaluation {
