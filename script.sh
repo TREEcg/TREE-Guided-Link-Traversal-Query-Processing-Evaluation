@@ -22,7 +22,7 @@ function startDataSourceDahcc1PDataDump {
         touch ./evaluation/sparql_comunica_log
         unset COMUNICA_CONFIG
         : > ./evaluation/sparql_comunica_log
-        createSPARQLEnpoint &> ./evaluation/sparql_comunica_log
+        #createSPARQLEnpoint &> ./evaluation/sparql_comunica_log
         exit 0
     fi
 }

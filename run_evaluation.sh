@@ -67,29 +67,11 @@ case $data_source in
         ;;
     dahcc-1-participant-one-ary-tree-100)
         liberateDataHostingPort
-        if [ $server = 1 ]; then
-            if [ $follow_tree_solver_config = 1 ]; then
-                export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-            elif [ $follow_tree_config = 1 ] ; then
-                export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
-            else
-                export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-            fi
-        fi
         startLDESOneAry100FragmentDataSourceDahcc1P $server
         ;;
 
     dahcc-1-participant-one-ary-tree-1000)
         liberateDataHostingPort
-        if [ $server = 1 ]; then
-            if [ $follow_tree_solver_config = 1 ]; then
-                export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-            elif [ $follow_tree_config = 1 ] ; then
-                export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree.json
-            else
-                export COMUNICA_CONFIG=./evaluation/config_comunica_follow_tree_solver.json
-            fi
-        fi
         startLDESOneAry1000FragmentDataSourceDahcc1P $server
         ;;
 
@@ -121,7 +103,7 @@ if [ $follow_tree_config = 1 ] ; then
     evaluationFollowTree
 fi
 
-
+if [ $server = 0 ]; then
 liberateSPARQLEndpointPort
 liberateDataHostingPort
-
+fi

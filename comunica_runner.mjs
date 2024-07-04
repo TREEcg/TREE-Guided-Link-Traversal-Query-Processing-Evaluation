@@ -12,6 +12,7 @@ program
 
     .requiredOption('-f, --file-path <string>', 'File path of the query to be executed')
     .requiredOption('-r, --root-nodes <string...>', 'the first data sources to query')
+    .requiredOption('-d, --metadata <string...>', 'the metadata file')
 
     .option('-m, --mode <mode>', 'The configuration of the engine', 'TREE')
     .option('-t, --timeout <number>', 'Timeout of the query in second', 120)
@@ -22,6 +23,7 @@ const options = program.opts();
 const queryFilePath = options.filePath;
 const timeout = options.timeout * 1000;
 const rootNodes = options.rootNodes;
+const metadataNode = options.metadata;
 const mode = options.mode;
 let engine = null;
 
@@ -57,7 +59,7 @@ const query = fs.readFileSync(queryFilePath).toString();
 
 const results = await engine.query(
     query, {
-    sources: rootNodes,
+    sources: rootNodes.concat(metadataNode),
     lenient: true,
 });
 
