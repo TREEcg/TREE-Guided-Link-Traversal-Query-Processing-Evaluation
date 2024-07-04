@@ -1,8 +1,21 @@
 # TREE-Guided-Link-Traversal-Query-Processing-Evaluation
 
-## Generate fragment
-To generate the fragmentation.
+## Prepare the data
 
+**Warning: Do not forget to clone the submodule **
+### Clone the submodule 
+```zsh
+git submodule init 
+git submodule update
+```
+
+or
+
+```zsh
+git clone --recurse-submodules -j8 {address of the repo}
+```
+
+### Generate fragments
 ```
 ./run_evaluation.sh install-comunica
 yarn install
