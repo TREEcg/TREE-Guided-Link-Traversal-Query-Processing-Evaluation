@@ -1,14 +1,38 @@
 # TREE-Guided-Link-Traversal-Query-Processing-Evaluation
 
-## Generate fragment
-To generate the fragmentation.
+## Dependencies
+- [Nodejs 18 or higher](https://nodejs.org/en)
+- [Rust](https://www.rust-lang.org/fr)
 
+## Prepare the data
+
+**Warning: Do not forget to clone the submodule**
+### Clone the submodule 
+```zsh
+git submodule init 
+git submodule update
 ```
+
+or
+
+```zsh
+git clone --recurse-submodules -j8 {address of the repo}
+```
+
+### Generate fragments
+```zsh
 ./run_evaluation.sh install-comunica
 yarn install
 ./run_evaluation.sh install-injestor
 ./run_evaluation.sh download-dataset 
-./run_evaluation.sh dahcc-1-participant-one-ary-tree-100
+```
+to generate the fragmentation with 100 nodes
+```zsh
+./run_evaluation.sh dahcc-1-participant-one-ary-tree-100 --server
+```
+to generate the fragmentation with 1000 nodes
+```zsh
+./run_evaluation.sh dahcc-1-participant-one-ary-tree-1000 --server
 ```
 
 ## Queries
