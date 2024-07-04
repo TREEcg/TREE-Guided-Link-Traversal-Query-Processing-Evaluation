@@ -1,8 +1,12 @@
 # TREE-Guided-Link-Traversal-Query-Processing-Evaluation
 
+## Dependencies
+- [Nodejs 18 or higher](https://nodejs.org/en)
+- [Rust](https://www.rust-lang.org/fr)
+
 ## Prepare the data
 
-**Warning: Do not forget to clone the submodule **
+**Warning: Do not forget to clone the submodule**
 ### Clone the submodule 
 ```zsh
 git submodule init 
