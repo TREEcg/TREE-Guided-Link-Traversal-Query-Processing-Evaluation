@@ -1,0 +1,14 @@
+PREFIX sosa: <http://www.w3.org/ns/sosa/> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX etsi: <https://saref.etsi.org/core/>
+    
+SELECT * WHERE {
+    ?s etsi:hasTimestamp ?t.
+?s etsi:hasValue ?result.
+?s etsi:measurementMadeBy ?sensor.
+?sensor <https://dahcc.idlab.ugent.be/Ontology/Sensors/analyseStateOf> ?stateOf.
+?sensor <https://saref.etsi.org/core/measuresProperty> <https://dahcc.idlab.ugent.be/Homelab/SensorsAndActuators/energy.consumption>
+
+    FILTER(?t>="2022-01-03T15:00:00.000000"^^xsd:dateTime && ?t<"2022-01-03T15:30:00.000000"^^xsd:dateTime)
+}
