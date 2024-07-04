@@ -28,11 +28,11 @@ yarn install
 ```
 to generate the fragmentation with 100 nodes
 ```zsh
-./run_evaluation.sh dahcc-1-participant-one-ary-tree-100
+./run_evaluation.sh dahcc-1-participant-one-ary-tree-100 --server
 ```
 to generate the fragmentation with 1000 nodes
 ```zsh
-./run_evaluation.sh dahcc-1-participant-one-ary-tree-1000
+./run_evaluation.sh dahcc-1-participant-one-ary-tree-1000 --server
 ```
 
 ## Queries
