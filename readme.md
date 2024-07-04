@@ -20,12 +20,19 @@ git clone --recurse-submodules -j8 {address of the repo}
 ```
 
 ### Generate fragments
-```
+```zsh
 ./run_evaluation.sh install-comunica
 yarn install
 ./run_evaluation.sh install-injestor
 ./run_evaluation.sh download-dataset 
+```
+to generate the fragmentation with 100 nodes
+```zsh
 ./run_evaluation.sh dahcc-1-participant-one-ary-tree-100
+```
+to generate the fragmentation with 1000 nodes
+```zsh
+./run_evaluation.sh dahcc-1-participant-one-ary-tree-1000
 ```
 
 ## Queries
