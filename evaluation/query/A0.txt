@@ -1,9 +1,0 @@
-PREFIX sosa: <http://www.w3.org/ns/sosa/> 
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
-PREFIX wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-PREFIX etsi: <https://saref.etsi.org/core/>
-
-SELECT * WHERE {
-    ?s etsi:hasTimestamp ?t.
-    FILTER(false)
-}
