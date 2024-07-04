@@ -57,7 +57,7 @@ function startLDESOneAry100FragmentDataSourceDahcc1P {
     export f=oneAryTree
     FRAGMENTATION_NAME="${f}${n}"
     mkdir -p ./evaluation/data/dahcc_1_participant_ldes
-    ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
+    ./TREE-datadump-injestor/target/release/data-dump-to-tree -n $n -d ./evaluation/data/dahcc_1_participant/data.ttl -c ./TREE-datadump-injestor/config.json -o ./evaluation/data/dahcc_1_participant_ldes -f $f
     startDataSourceDahcc1PLDEServer $1
 
  }
